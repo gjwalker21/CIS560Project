@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             ConferenceButton = new Button();
             dataGridView1 = new DataGridView();
             DivisionsButton = new Button();
@@ -43,7 +44,11 @@
             button3 = new Button();
             button4 = new Button();
             RunQueryButton = new Button();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            addRowToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // ConferenceButton
@@ -58,12 +63,15 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(56, 420);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1312, 364);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellValueChanged += dataGridView1_CellContentChanged;
+            dataGridView1.MouseClick += Mouse_Click;
             // 
             // DivisionsButton
             // 
@@ -189,6 +197,27 @@
             RunQueryButton.UseVisualStyleBackColor = true;
             RunQueryButton.Click += RunQueryButton_Click;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { addRowToolStripMenuItem, toolStripMenuItem1 });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(134, 48);
+            // 
+            // addRowToolStripMenuItem
+            // 
+            addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
+            addRowToolStripMenuItem.Size = new Size(133, 22);
+            addRowToolStripMenuItem.Text = "Add Row";
+            addRowToolStripMenuItem.Click += AddRow_Click;
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.AccessibleName = "DeleteRow";
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(133, 22);
+            toolStripMenuItem1.Text = "Delete Row";
+            toolStripMenuItem1.Click += DeleteRow_Click;
+            // 
             // NFLDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -212,6 +241,7 @@
             Name = "NFLDatabase";
             Text = "NFLDatabase";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -232,5 +262,8 @@
         private Button button3;
         private Button button4;
         private Button RunQueryButton;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem addRowToolStripMenuItem;
     }
 }
