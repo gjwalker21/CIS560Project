@@ -37,17 +37,14 @@
             PlayerContractButton = new Button();
             ScheduleButton = new Button();
             TeamSeasonButton = new Button();
+            richTextBox1 = new RichTextBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            RunQueryButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(56, 420);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1312, 364);
-            dataGridView1.TabIndex = 1;
             // 
             // ConferenceButton
             // 
@@ -58,6 +55,15 @@
             ConferenceButton.Text = "Conferences";
             ConferenceButton.UseVisualStyleBackColor = true;
             ConferenceButton.Click += Table_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(56, 420);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(1312, 364);
+            dataGridView1.TabIndex = 1;
             // 
             // DivisionsButton
             // 
@@ -129,11 +135,71 @@
             TeamSeasonButton.UseVisualStyleBackColor = true;
             TeamSeasonButton.Click += Table_Click;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(691, 58);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(677, 274);
+            richTextBox1.TabIndex = 9;
+            richTextBox1.Text = "";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(476, 58);
+            button1.Name = "button1";
+            button1.Size = new Size(96, 23);
+            button1.TabIndex = 10;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(476, 141);
+            button2.Name = "button2";
+            button2.Size = new Size(96, 23);
+            button2.TabIndex = 11;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(476, 225);
+            button3.Name = "button3";
+            button3.Size = new Size(96, 23);
+            button3.TabIndex = 12;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(476, 309);
+            button4.Name = "button4";
+            button4.Size = new Size(96, 23);
+            button4.TabIndex = 13;
+            button4.Text = "button4";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // RunQueryButton
+            // 
+            RunQueryButton.Location = new Point(1237, 361);
+            RunQueryButton.Name = "RunQueryButton";
+            RunQueryButton.Size = new Size(131, 26);
+            RunQueryButton.TabIndex = 14;
+            RunQueryButton.Text = "Run Query";
+            RunQueryButton.UseVisualStyleBackColor = true;
+            RunQueryButton.Click += RunQueryButton_Click;
+            // 
             // NFLDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1431, 819);
+            Controls.Add(RunQueryButton);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(richTextBox1);
             Controls.Add(TeamSeasonButton);
             Controls.Add(ScheduleButton);
             Controls.Add(PlayerContractButton);
@@ -160,5 +226,11 @@
         private Button PlayerContractButton;
         private Button ScheduleButton;
         private Button TeamSeasonButton;
+        private RichTextBox richTextBox1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button RunQueryButton;
     }
 }
