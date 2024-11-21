@@ -60,6 +60,11 @@ namespace CIS560Project
             }
         }
 
+        private void EditTable()
+        {
+
+        }
+
         private static void ExecuteNonQuery(SqlConnection cn, string command)
         {
             using var cmd = cn.CreateCommand();
