@@ -39,7 +39,7 @@
             ScheduleButton = new Button();
             TeamSeasonButton = new Button();
             richTextBox1 = new RichTextBox();
-            button1 = new Button();
+            HomeTeamPerformance = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
@@ -47,6 +47,8 @@
             contextMenuStrip1 = new ContextMenuStrip(components);
             addRowToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
+            button5 = new Button();
+            SearchButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
@@ -66,11 +68,10 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(56, 420);
+            dataGridView1.Location = new Point(57, 420);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1312, 364);
+            dataGridView1.Size = new Size(936, 364);
             dataGridView1.TabIndex = 1;
-            dataGridView1.CellValueChanged += dataGridView1_CellContentChanged;
             dataGridView1.MouseClick += Mouse_Click;
             // 
             // DivisionsButton
@@ -151,14 +152,15 @@
             richTextBox1.TabIndex = 9;
             richTextBox1.Text = "";
             // 
-            // button1
+            // HomeTeamPerformance
             // 
-            button1.Location = new Point(476, 58);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 23);
-            button1.TabIndex = 10;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            HomeTeamPerformance.Location = new Point(476, 58);
+            HomeTeamPerformance.Name = "HomeTeamPerformance";
+            HomeTeamPerformance.Size = new Size(164, 23);
+            HomeTeamPerformance.TabIndex = 10;
+            HomeTeamPerformance.Text = "Home Team Performance";
+            HomeTeamPerformance.UseVisualStyleBackColor = true;
+            HomeTeamPerformance.Click += LoadQueryButton_Click;
             // 
             // button2
             // 
@@ -189,7 +191,7 @@
             // 
             // RunQueryButton
             // 
-            RunQueryButton.Location = new Point(1237, 361);
+            RunQueryButton.Location = new Point(1237, 352);
             RunQueryButton.Name = "RunQueryButton";
             RunQueryButton.Size = new Size(131, 26);
             RunQueryButton.TabIndex = 14;
@@ -218,16 +220,38 @@
             toolStripMenuItem1.Text = "Delete Row";
             toolStripMenuItem1.Click += DeleteRow_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(1026, 420);
+            button5.Name = "button5";
+            button5.Size = new Size(120, 31);
+            button5.TabIndex = 17;
+            button5.Text = "Finalize Changes";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += Finalize_Click;
+            // 
+            // SearchButton
+            // 
+            SearchButton.Location = new Point(1026, 694);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(85, 31);
+            SearchButton.TabIndex = 18;
+            SearchButton.Text = "Search";
+            SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
+            // 
             // NFLDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1431, 819);
+            Controls.Add(SearchButton);
+            Controls.Add(button5);
             Controls.Add(RunQueryButton);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(HomeTeamPerformance);
             Controls.Add(richTextBox1);
             Controls.Add(TeamSeasonButton);
             Controls.Add(ScheduleButton);
@@ -257,7 +281,7 @@
         private Button ScheduleButton;
         private Button TeamSeasonButton;
         private RichTextBox richTextBox1;
-        private Button button1;
+        private Button HomeTeamPerformance;
         private Button button2;
         private Button button3;
         private Button button4;
@@ -265,5 +289,7 @@
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem addRowToolStripMenuItem;
+        private Button button5;
+        private Button SearchButton;
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Data.SqlTypes;
 
 namespace CIS560Project
 {
@@ -11,9 +12,9 @@ namespace CIS560Project
 
         private DataTable? dataTable;
 
-        private SqlCommandBuilder? commandBuilder;
-
         private string currentTable = "";
+
+        private readonly Search form3 = new();
 
         public NFLDatabase()
         {
@@ -91,27 +92,6 @@ namespace CIS560Project
             }
         }
 
-        private void dataGridView1_CellContentChanged(object sender, DataGridViewCellEventArgs e)
-        {            
-            if (dataGridView1.CurrentCell.Value != null 
-                && dataAdapter != null 
-                && dataTable != null 
-                && BindingContext != null)
-            {
-                try
-                {
-                    dataGridView1.EndEdit(); 
-                    BindingContext[dataTable].EndCurrentEdit(); 
-                    commandBuilder = new(dataAdapter);
-                    dataAdapter.Update(dataTable);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
         private void DeleteRow_Click(object sender, EventArgs e)
         {
             string query;
@@ -128,14 +108,7 @@ namespace CIS560Project
                 _ => ""
             };
 
-            if (currentTable == "fb.Season")
-            {
-                query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentRow.Index + 2020}";
-            }
-            else
-            {
-                query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentRow.Index + 1}";
-            }
+            query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
 
             if (Connection != null)
             {
@@ -152,7 +125,6 @@ namespace CIS560Project
             }
         }
 
-
         private void ExecuteNonQuery(SqlConnection cn, string command)
         {
             var cmd = cn.CreateCommand();
@@ -161,9 +133,48 @@ namespace CIS560Project
             LoadTable(currentTable);
         }
 
+        private void LoadQueryButton_Click(object sender, EventArgs e)
+        {
+            string fileName = "";
+            if (sender is Button b)
+            {
+                if (b.Name == "HomeTeamPerformance")
+                {
+                    fileName = "HomeTeamPerformance.txt";
+                }
+                /*
+                if (b.Name == "HomeTeamPerformance")
+                {
+                    fileName = "HomeTeamPerformance.txt";
+                }
+                if (b.Name == "HomeTeamPerformance")
+                {
+                    fileName = "HomeTeamPerformance.txt";
+                }
+                if (b.Name == "HomeTeamPerformance")
+                {
+                    fileName = "HomeTeamPerformance.txt";
+                }
+                */
+            }
+
+            using StreamReader sr = new(fileName);
+            richTextBox1.Text = sr.ReadToEnd();
+        }
+
         private void RunQueryButton_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                dataAdapter = new(richTextBox1.Text, Connection);
+                dataTable = new();
+                dataAdapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Mouse_Click(object sender, MouseEventArgs e)
@@ -172,6 +183,32 @@ namespace CIS560Project
             {
                 contextMenuStrip1.Show(this.dataGridView1, e.Location);
             }
+        }
+
+        private void Finalize_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell.Value != null
+                && dataAdapter != null
+                && dataTable != null
+                && BindingContext != null
+                && dataGridView1.IsCurrentRowDirty == false)
+            {
+                try
+                {
+                    dataGridView1.EndEdit();
+                    BindingContext[dataTable].EndCurrentEdit();
+                    SqlCommandBuilder commandBuilder = new(dataAdapter);
+                    dataAdapter.Update(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            form3.Show();
         }
     }
 }
