@@ -32,17 +32,12 @@
             label15 = new Label();
             TabControl = new TabControl();
             TeamTab = new TabPage();
-            TeamTeamName = new TextBox();
             label3 = new Label();
             TeamBox = new GroupBox();
             label1 = new Label();
             label2 = new Label();
-            TeamConference = new TextBox();
-            TeamDivision = new TextBox();
             label4 = new Label();
-            TeamSeason = new TextBox();
             label6 = new Label();
-            TeamPlayedDate = new TextBox();
             PlayerTab = new TabPage();
             PlayerTeam = new TextBox();
             label8 = new Label();
@@ -67,7 +62,6 @@
             label11 = new Label();
             label18 = new Label();
             Winner = new TextBox();
-            Date = new TextBox();
             AwayTeam = new TextBox();
             label20 = new Label();
             GameConference = new TextBox();
@@ -78,12 +72,19 @@
             label27 = new Label();
             SearchButton = new Button();
             label5 = new Label();
-            textBox1 = new TextBox();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            comboBox3 = new ComboBox();
+            comboBox4 = new ComboBox();
+            comboBox5 = new ComboBox();
+            comboBox6 = new ComboBox();
             TabControl.SuspendLayout();
             TeamTab.SuspendLayout();
             TeamBox.SuspendLayout();
             PlayerTab.SuspendLayout();
+            PlayerBox.SuspendLayout();
             GameTab.SuspendLayout();
+            GameBox.SuspendLayout();
             SuspendLayout();
             // 
             // label13
@@ -126,13 +127,6 @@
             TeamTab.Text = "Team";
             TeamTab.UseVisualStyleBackColor = true;
             // 
-            // TeamTeamName
-            // 
-            TeamTeamName.Location = new Point(171, 22);
-            TeamTeamName.Name = "TeamTeamName";
-            TeamTeamName.Size = new Size(100, 23);
-            TeamTeamName.TabIndex = 53;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -144,18 +138,18 @@
             // 
             // TeamBox
             // 
-            TeamBox.Controls.Add(textBox1);
+            TeamBox.Controls.Add(comboBox6);
+            TeamBox.Controls.Add(comboBox5);
+            TeamBox.Controls.Add(comboBox4);
+            TeamBox.Controls.Add(comboBox3);
+            TeamBox.Controls.Add(comboBox2);
+            TeamBox.Controls.Add(comboBox1);
             TeamBox.Controls.Add(label5);
             TeamBox.Controls.Add(label3);
-            TeamBox.Controls.Add(TeamTeamName);
             TeamBox.Controls.Add(label1);
             TeamBox.Controls.Add(label2);
-            TeamBox.Controls.Add(TeamConference);
-            TeamBox.Controls.Add(TeamDivision);
             TeamBox.Controls.Add(label4);
-            TeamBox.Controls.Add(TeamSeason);
             TeamBox.Controls.Add(label6);
-            TeamBox.Controls.Add(TeamPlayedDate);
             TeamBox.Location = new Point(38, 28);
             TeamBox.Name = "TeamBox";
             TeamBox.Size = new Size(598, 250);
@@ -167,7 +161,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(325, 22);
+            label1.Location = new Point(325, 30);
             label1.Name = "label1";
             label1.Size = new Size(81, 15);
             label1.TabIndex = 48;
@@ -176,25 +170,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(81, 81);
+            label2.Location = new Point(81, 84);
             label2.Name = "label2";
             label2.Size = new Size(62, 15);
             label2.TabIndex = 49;
             label2.Text = "In Division";
-            // 
-            // TeamConference
-            // 
-            TeamConference.Location = new Point(440, 19);
-            TeamConference.Name = "TeamConference";
-            TeamConference.Size = new Size(100, 23);
-            TeamConference.TabIndex = 51;
-            // 
-            // TeamDivision
-            // 
-            TeamDivision.Location = new Point(171, 81);
-            TeamDivision.Name = "TeamDivision";
-            TeamDivision.Size = new Size(100, 23);
-            TeamDivision.TabIndex = 52;
             // 
             // label4
             // 
@@ -205,42 +185,20 @@
             label4.TabIndex = 56;
             label4.Text = "Season Played";
             // 
-            // TeamSeason
-            // 
-            TeamSeason.Location = new Point(171, 138);
-            TeamSeason.Name = "TeamSeason";
-            TeamSeason.Size = new Size(100, 23);
-            TeamSeason.TabIndex = 59;
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(325, 78);
+            label6.Location = new Point(325, 84);
             label6.Name = "label6";
             label6.Size = new Size(88, 15);
             label6.TabIndex = 54;
             label6.Text = "Played On Date";
             // 
-            // TeamPlayedDate
-            // 
-            TeamPlayedDate.Location = new Point(440, 78);
-            TeamPlayedDate.Name = "TeamPlayedDate";
-            TeamPlayedDate.Size = new Size(100, 23);
-            TeamPlayedDate.TabIndex = 57;
-            // 
             // PlayerTab
             // 
             PlayerTab.Controls.Add(PlayerTeam);
             PlayerTab.Controls.Add(label8);
-            PlayerTab.Controls.Add(PlayerPlayerName);
-            PlayerTab.Controls.Add(label16);
-            PlayerTab.Controls.Add(label19);
-            PlayerTab.Controls.Add(label21);
-            PlayerTab.Controls.Add(PlayerPosition);
             PlayerTab.Controls.Add(PlayerDivision);
-            PlayerTab.Controls.Add(PlayerAge);
-            PlayerTab.Controls.Add(label23);
-            PlayerTab.Controls.Add(PlayerSeason);
             PlayerTab.Controls.Add(PlayerConference);
             PlayerTab.Controls.Add(label25);
             PlayerTab.Controls.Add(label26);
@@ -271,7 +229,7 @@
             // 
             // PlayerPlayerName
             // 
-            PlayerPlayerName.Location = new Point(204, 95);
+            PlayerPlayerName.Location = new Point(176, 33);
             PlayerPlayerName.Name = "PlayerPlayerName";
             PlayerPlayerName.Size = new Size(100, 23);
             PlayerPlayerName.TabIndex = 78;
@@ -279,7 +237,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(99, 103);
+            label16.Location = new Point(71, 33);
             label16.Name = "label16";
             label16.Size = new Size(74, 15);
             label16.TabIndex = 75;
@@ -288,7 +246,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(362, 215);
+            label19.Location = new Point(49, 191);
             label19.Name = "label19";
             label19.Size = new Size(82, 15);
             label19.TabIndex = 87;
@@ -297,7 +255,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(77, 215);
+            label21.Location = new Point(49, 135);
             label21.Name = "label21";
             label21.Size = new Size(85, 15);
             label21.TabIndex = 85;
@@ -305,7 +263,7 @@
             // 
             // PlayerPosition
             // 
-            PlayerPosition.Location = new Point(204, 207);
+            PlayerPosition.Location = new Point(176, 135);
             PlayerPosition.Name = "PlayerPosition";
             PlayerPosition.Size = new Size(100, 23);
             PlayerPosition.TabIndex = 84;
@@ -319,7 +277,7 @@
             // 
             // PlayerAge
             // 
-            PlayerAge.Location = new Point(204, 151);
+            PlayerAge.Location = new Point(176, 84);
             PlayerAge.Name = "PlayerAge";
             PlayerAge.Size = new Size(100, 23);
             PlayerAge.TabIndex = 82;
@@ -327,7 +285,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(99, 159);
+            label23.Location = new Point(71, 84);
             label23.Name = "label23";
             label23.Size = new Size(63, 15);
             label23.TabIndex = 80;
@@ -335,7 +293,7 @@
             // 
             // PlayerSeason
             // 
-            PlayerSeason.Location = new Point(485, 207);
+            PlayerSeason.Location = new Point(176, 188);
             PlayerSeason.Name = "PlayerSeason";
             PlayerSeason.Size = new Size(100, 23);
             PlayerSeason.TabIndex = 77;
@@ -367,9 +325,17 @@
             // 
             // PlayerBox
             // 
+            PlayerBox.Controls.Add(label16);
+            PlayerBox.Controls.Add(PlayerPlayerName);
+            PlayerBox.Controls.Add(label19);
+            PlayerBox.Controls.Add(PlayerSeason);
+            PlayerBox.Controls.Add(label23);
+            PlayerBox.Controls.Add(PlayerPosition);
+            PlayerBox.Controls.Add(label21);
+            PlayerBox.Controls.Add(PlayerAge);
             PlayerBox.Location = new Point(28, 24);
             PlayerBox.Name = "PlayerBox";
-            PlayerBox.Size = new Size(624, 270);
+            PlayerBox.Size = new Size(624, 237);
             PlayerBox.TabIndex = 100;
             PlayerBox.TabStop = false;
             PlayerBox.Text = "PlayerBox";
@@ -380,16 +346,6 @@
             GameTab.Controls.Add(label17);
             GameTab.Controls.Add(Season);
             GameTab.Controls.Add(label9);
-            GameTab.Controls.Add(HomeTeam);
-            GameTab.Controls.Add(label11);
-            GameTab.Controls.Add(label18);
-            GameTab.Controls.Add(Winner);
-            GameTab.Controls.Add(Date);
-            GameTab.Controls.Add(AwayTeam);
-            GameTab.Controls.Add(label20);
-            GameTab.Controls.Add(GameConference);
-            GameTab.Controls.Add(GameDivision);
-            GameTab.Controls.Add(label22);
             GameTab.Controls.Add(label24);
             GameTab.Controls.Add(GameBox);
             GameTab.Location = new Point(4, 24);
@@ -427,7 +383,7 @@
             // 
             // HomeTeam
             // 
-            HomeTeam.Location = new Point(203, 107);
+            HomeTeam.Location = new Point(171, 37);
             HomeTeam.Name = "HomeTeam";
             HomeTeam.Size = new Size(100, 23);
             HomeTeam.TabIndex = 104;
@@ -435,7 +391,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(96, 115);
+            label11.Location = new Point(64, 45);
             label11.Name = "label11";
             label11.Size = new Size(72, 15);
             label11.TabIndex = 101;
@@ -444,7 +400,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(116, 227);
+            label18.Location = new Point(87, 152);
             label18.Name = "label18";
             label18.Size = new Size(45, 15);
             label18.TabIndex = 109;
@@ -452,21 +408,14 @@
             // 
             // Winner
             // 
-            Winner.Location = new Point(203, 219);
+            Winner.Location = new Point(171, 144);
             Winner.Name = "Winner";
             Winner.Size = new Size(100, 23);
             Winner.TabIndex = 108;
             // 
-            // Date
-            // 
-            Date.Location = new Point(476, 112);
-            Date.Name = "Date";
-            Date.Size = new Size(100, 23);
-            Date.TabIndex = 107;
-            // 
             // AwayTeam
             // 
-            AwayTeam.Location = new Point(203, 163);
+            AwayTeam.Location = new Point(171, 88);
             AwayTeam.Name = "AwayTeam";
             AwayTeam.Size = new Size(100, 23);
             AwayTeam.TabIndex = 106;
@@ -474,7 +423,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(96, 171);
+            label20.Location = new Point(64, 96);
             label20.Name = "label20";
             label20.Size = new Size(68, 15);
             label20.TabIndex = 105;
@@ -482,14 +431,14 @@
             // 
             // GameConference
             // 
-            GameConference.Location = new Point(476, 219);
+            GameConference.Location = new Point(171, 200);
             GameConference.Name = "GameConference";
             GameConference.Size = new Size(100, 23);
             GameConference.TabIndex = 103;
             // 
             // GameDivision
             // 
-            GameDivision.Location = new Point(476, 163);
+            GameDivision.Location = new Point(444, 149);
             GameDivision.Name = "GameDivision";
             GameDivision.Size = new Size(100, 23);
             GameDivision.TabIndex = 102;
@@ -497,7 +446,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(356, 227);
+            label22.Location = new Point(55, 203);
             label22.Name = "label22";
             label22.Size = new Size(81, 15);
             label22.TabIndex = 100;
@@ -514,9 +463,18 @@
             // 
             // GameBox
             // 
-            GameBox.Location = new Point(32, 24);
+            GameBox.Controls.Add(label11);
+            GameBox.Controls.Add(HomeTeam);
+            GameBox.Controls.Add(label20);
+            GameBox.Controls.Add(Winner);
+            GameBox.Controls.Add(GameDivision);
+            GameBox.Controls.Add(GameConference);
+            GameBox.Controls.Add(label18);
+            GameBox.Controls.Add(AwayTeam);
+            GameBox.Controls.Add(label22);
+            GameBox.Location = new Point(32, 21);
             GameBox.Name = "GameBox";
-            GameBox.Size = new Size(619, 266);
+            GameBox.Size = new Size(619, 251);
             GameBox.TabIndex = 116;
             GameBox.TabStop = false;
             GameBox.Text = "GameBox";
@@ -550,12 +508,53 @@
             label5.TabIndex = 60;
             label5.Text = "Played At";
             // 
-            // textBox1
+            // comboBox1
             // 
-            textBox1.Location = new Point(440, 143);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 61;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(168, 30);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 62;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(168, 81);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 63;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(168, 141);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 64;
+            // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(445, 30);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(121, 23);
+            comboBox4.TabIndex = 65;
+            // 
+            // comboBox5
+            // 
+            comboBox5.FormattingEnabled = true;
+            comboBox5.Location = new Point(445, 84);
+            comboBox5.Name = "comboBox5";
+            comboBox5.Size = new Size(121, 23);
+            comboBox5.TabIndex = 66;
+            // 
+            // comboBox6
+            // 
+            comboBox6.FormattingEnabled = true;
+            comboBox6.Location = new Point(445, 143);
+            comboBox6.Name = "comboBox6";
+            comboBox6.Size = new Size(121, 23);
+            comboBox6.TabIndex = 67;
             // 
             // Search
             // 
@@ -575,8 +574,12 @@
             TeamBox.PerformLayout();
             PlayerTab.ResumeLayout(false);
             PlayerTab.PerformLayout();
+            PlayerBox.ResumeLayout(false);
+            PlayerBox.PerformLayout();
             GameTab.ResumeLayout(false);
             GameTab.PerformLayout();
+            GameBox.ResumeLayout(false);
+            GameBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -586,13 +589,8 @@
         private Label label15;
         private TabControl TabControl;
         private TabPage TeamTab;
-        private TextBox TeamSeason;
-        private TextBox TeamPlayedDate;
         private Label label4;
         private Label label6;
-        private TextBox TeamTeamName;
-        private TextBox TeamDivision;
-        private TextBox TeamConference;
         private Label label3;
         private Label label2;
         private Label label1;
@@ -619,7 +617,6 @@
         private Label label11;
         private Label label18;
         private TextBox Winner;
-        private TextBox Date;
         private TextBox AwayTeam;
         private Label label20;
         private TextBox GameConference;
@@ -632,6 +629,11 @@
         private GroupBox GameBox;
         private Button SearchButton;
         private Label label5;
-        private TextBox textBox1;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private ComboBox comboBox3;
+        private ComboBox comboBox4;
+        private ComboBox comboBox5;
+        private ComboBox comboBox6;
     }
 }

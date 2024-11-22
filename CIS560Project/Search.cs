@@ -97,5 +97,10 @@ namespace CIS560Project
             }
             return "SELECT * FROM fb.Schedule";
         }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
     }
 }

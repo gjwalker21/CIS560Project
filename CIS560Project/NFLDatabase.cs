@@ -164,8 +164,8 @@ namespace CIS560Project
         private void AddRow_Click(object sender, EventArgs e)
         {
             if (currentTable != "fb.Conference"
-                || currentTable != "fb.Division"
-                || currentTable != "fb.Team")
+                && currentTable != "fb.Division"
+                && currentTable != "fb.Team")
             {
                 if (DataTable != null && DataAdapter != null)
                 {
