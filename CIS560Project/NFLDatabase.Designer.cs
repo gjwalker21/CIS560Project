@@ -35,14 +35,12 @@
             TeamsButton = new Button();
             SeasonButton = new Button();
             PlayersButton = new Button();
-            PlayerContractButton = new Button();
             ScheduleButton = new Button();
-            TeamSeasonButton = new Button();
             richTextBox1 = new RichTextBox();
             HomeTeamPerformance = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            ConferenceRank = new Button();
+            AverageAge = new Button();
+            AverageWins = new Button();
             RunQueryButton = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             addRowToolStripMenuItem = new ToolStripMenuItem();
@@ -57,9 +55,9 @@
             // 
             // ConferenceButton
             // 
-            ConferenceButton.Location = new Point(91, 76);
+            ConferenceButton.Location = new Point(284, 141);
             ConferenceButton.Name = "ConferenceButton";
-            ConferenceButton.Size = new Size(96, 23);
+            ConferenceButton.Size = new Size(113, 43);
             ConferenceButton.TabIndex = 0;
             ConferenceButton.Text = "Conferences";
             ConferenceButton.UseVisualStyleBackColor = true;
@@ -78,9 +76,9 @@
             // 
             // DivisionsButton
             // 
-            DivisionsButton.Location = new Point(91, 159);
+            DivisionsButton.Location = new Point(284, 213);
             DivisionsButton.Name = "DivisionsButton";
-            DivisionsButton.Size = new Size(96, 23);
+            DivisionsButton.Size = new Size(113, 43);
             DivisionsButton.TabIndex = 2;
             DivisionsButton.Text = "Divisions";
             DivisionsButton.UseVisualStyleBackColor = true;
@@ -88,9 +86,9 @@
             // 
             // TeamsButton
             // 
-            TeamsButton.Location = new Point(91, 243);
+            TeamsButton.Location = new Point(91, 141);
             TeamsButton.Name = "TeamsButton";
-            TeamsButton.Size = new Size(96, 23);
+            TeamsButton.Size = new Size(113, 43);
             TeamsButton.TabIndex = 3;
             TeamsButton.Text = "Teams";
             TeamsButton.UseVisualStyleBackColor = true;
@@ -98,9 +96,9 @@
             // 
             // SeasonButton
             // 
-            SeasonButton.Location = new Point(91, 327);
+            SeasonButton.Location = new Point(284, 284);
             SeasonButton.Name = "SeasonButton";
-            SeasonButton.Size = new Size(96, 23);
+            SeasonButton.Size = new Size(113, 43);
             SeasonButton.TabIndex = 4;
             SeasonButton.Text = "Seasons";
             SeasonButton.UseVisualStyleBackColor = true;
@@ -108,43 +106,23 @@
             // 
             // PlayersButton
             // 
-            PlayersButton.Location = new Point(284, 76);
+            PlayersButton.Location = new Point(91, 213);
             PlayersButton.Name = "PlayersButton";
-            PlayersButton.Size = new Size(96, 23);
+            PlayersButton.Size = new Size(113, 43);
             PlayersButton.TabIndex = 5;
             PlayersButton.Text = "Players";
             PlayersButton.UseVisualStyleBackColor = true;
             PlayersButton.Click += Table_Click;
             // 
-            // PlayerContractButton
-            // 
-            PlayerContractButton.Location = new Point(284, 159);
-            PlayerContractButton.Name = "PlayerContractButton";
-            PlayerContractButton.Size = new Size(96, 23);
-            PlayerContractButton.TabIndex = 6;
-            PlayerContractButton.Text = "PlayerContract";
-            PlayerContractButton.UseVisualStyleBackColor = true;
-            PlayerContractButton.Click += Table_Click;
-            // 
             // ScheduleButton
             // 
-            ScheduleButton.Location = new Point(284, 243);
+            ScheduleButton.Location = new Point(91, 284);
             ScheduleButton.Name = "ScheduleButton";
-            ScheduleButton.Size = new Size(96, 23);
+            ScheduleButton.Size = new Size(113, 43);
             ScheduleButton.TabIndex = 7;
             ScheduleButton.Text = "Schedule";
             ScheduleButton.UseVisualStyleBackColor = true;
             ScheduleButton.Click += Table_Click;
-            // 
-            // TeamSeasonButton
-            // 
-            TeamSeasonButton.Location = new Point(284, 327);
-            TeamSeasonButton.Name = "TeamSeasonButton";
-            TeamSeasonButton.Size = new Size(96, 23);
-            TeamSeasonButton.TabIndex = 8;
-            TeamSeasonButton.Text = "TeamSeason";
-            TeamSeasonButton.UseVisualStyleBackColor = true;
-            TeamSeasonButton.Click += Table_Click;
             // 
             // richTextBox1
             // 
@@ -156,40 +134,43 @@
             // 
             // HomeTeamPerformance
             // 
-            HomeTeamPerformance.Location = new Point(469, 76);
+            HomeTeamPerformance.Location = new Point(469, 118);
             HomeTeamPerformance.Name = "HomeTeamPerformance";
-            HomeTeamPerformance.Size = new Size(164, 23);
+            HomeTeamPerformance.Size = new Size(158, 23);
             HomeTeamPerformance.TabIndex = 10;
             HomeTeamPerformance.Text = "Home Team Performance";
             HomeTeamPerformance.UseVisualStyleBackColor = true;
             HomeTeamPerformance.Click += LoadQueryButton_Click;
             // 
-            // button2
+            // ConferenceRank
             // 
-            button2.Location = new Point(469, 159);
-            button2.Name = "button2";
-            button2.Size = new Size(96, 23);
-            button2.TabIndex = 11;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            ConferenceRank.Location = new Point(469, 190);
+            ConferenceRank.Name = "ConferenceRank";
+            ConferenceRank.Size = new Size(158, 23);
+            ConferenceRank.TabIndex = 11;
+            ConferenceRank.Text = "Rank Teams in Conference";
+            ConferenceRank.UseVisualStyleBackColor = true;
+            ConferenceRank.Click += LoadQueryButton_Click;
             // 
-            // button3
+            // AverageAge
             // 
-            button3.Location = new Point(469, 243);
-            button3.Name = "button3";
-            button3.Size = new Size(96, 23);
-            button3.TabIndex = 12;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            AverageAge.Location = new Point(469, 261);
+            AverageAge.Name = "AverageAge";
+            AverageAge.Size = new Size(158, 23);
+            AverageAge.TabIndex = 12;
+            AverageAge.Text = "Average Age per Position";
+            AverageAge.UseVisualStyleBackColor = true;
+            AverageAge.Click += LoadQueryButton_Click;
             // 
-            // button4
+            // AverageWins
             // 
-            button4.Location = new Point(469, 327);
-            button4.Name = "button4";
-            button4.Size = new Size(96, 23);
-            button4.TabIndex = 13;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            AverageWins.Location = new Point(469, 328);
+            AverageWins.Name = "AverageWins";
+            AverageWins.Size = new Size(158, 23);
+            AverageWins.TabIndex = 13;
+            AverageWins.Text = "Average Wins per Team";
+            AverageWins.UseVisualStyleBackColor = true;
+            AverageWins.Click += LoadQueryButton_Click;
             // 
             // RunQueryButton
             // 
@@ -234,7 +215,7 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(1026, 694);
+            SearchButton.Location = new Point(1026, 753);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(85, 31);
             SearchButton.TabIndex = 18;
@@ -245,18 +226,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(91, 27);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(91, 55);
             label1.Name = "label1";
-            label1.Size = new Size(40, 15);
+            label1.Size = new Size(52, 21);
             label1.TabIndex = 19;
             label1.Text = "Tables";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(712, 27);
             label2.Name = "label2";
-            label2.Size = new Size(63, 15);
+            label2.Size = new Size(86, 21);
             label2.TabIndex = 20;
             label2.Text = "SQL Query";
             // 
@@ -270,14 +253,12 @@
             Controls.Add(SearchButton);
             Controls.Add(button5);
             Controls.Add(RunQueryButton);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(AverageWins);
+            Controls.Add(AverageAge);
+            Controls.Add(ConferenceRank);
             Controls.Add(HomeTeamPerformance);
             Controls.Add(richTextBox1);
-            Controls.Add(TeamSeasonButton);
             Controls.Add(ScheduleButton);
-            Controls.Add(PlayerContractButton);
             Controls.Add(PlayersButton);
             Controls.Add(SeasonButton);
             Controls.Add(TeamsButton);
@@ -299,14 +280,12 @@
         private Button TeamsButton;
         private Button SeasonButton;
         private Button PlayersButton;
-        private Button PlayerContractButton;
         private Button ScheduleButton;
-        private Button TeamSeasonButton;
         private RichTextBox richTextBox1;
         private Button HomeTeamPerformance;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button ConferenceRank;
+        private Button AverageAge;
+        private Button AverageWins;
         private Button RunQueryButton;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;

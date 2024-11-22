@@ -32,28 +32,20 @@
             label15 = new Label();
             TabControl = new TabControl();
             TeamTab = new TabPage();
-            label7 = new Label();
-            TeamTeamID = new TextBox();
             TeamTeamName = new TextBox();
             label3 = new Label();
-            TeamPlayerPosition = new TextBox();
-            label12 = new Label();
-            TeamSeason = new TextBox();
-            TeamPlayers = new TextBox();
-            TeamPlayedDate = new TextBox();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            TeamDivision = new TextBox();
-            TeamConference = new TextBox();
-            label2 = new Label();
-            label1 = new Label();
             TeamBox = new GroupBox();
+            label1 = new Label();
+            label2 = new Label();
+            TeamConference = new TextBox();
+            TeamDivision = new TextBox();
+            label4 = new Label();
+            TeamSeason = new TextBox();
+            label6 = new Label();
+            TeamPlayedDate = new TextBox();
             PlayerTab = new TabPage();
             PlayerTeam = new TextBox();
             label8 = new Label();
-            label14 = new Label();
-            PlayerPlayerID = new TextBox();
             PlayerPlayerName = new TextBox();
             label16 = new Label();
             label19 = new Label();
@@ -71,8 +63,6 @@
             label17 = new Label();
             Season = new TextBox();
             label9 = new Label();
-            label10 = new Label();
-            GameID = new TextBox();
             HomeTeam = new TextBox();
             label11 = new Label();
             label18 = new Label();
@@ -87,8 +77,11 @@
             GameBox = new GroupBox();
             label27 = new Label();
             SearchButton = new Button();
+            label5 = new Label();
+            textBox1 = new TextBox();
             TabControl.SuspendLayout();
             TeamTab.SuspendLayout();
+            TeamBox.SuspendLayout();
             PlayerTab.SuspendLayout();
             GameTab.SuspendLayout();
             SuspendLayout();
@@ -124,22 +117,6 @@
             // 
             // TeamTab
             // 
-            TeamTab.Controls.Add(label7);
-            TeamTab.Controls.Add(TeamTeamID);
-            TeamTab.Controls.Add(TeamTeamName);
-            TeamTab.Controls.Add(label3);
-            TeamTab.Controls.Add(TeamPlayerPosition);
-            TeamTab.Controls.Add(label12);
-            TeamTab.Controls.Add(TeamSeason);
-            TeamTab.Controls.Add(TeamPlayers);
-            TeamTab.Controls.Add(TeamPlayedDate);
-            TeamTab.Controls.Add(label4);
-            TeamTab.Controls.Add(label5);
-            TeamTab.Controls.Add(label6);
-            TeamTab.Controls.Add(TeamDivision);
-            TeamTab.Controls.Add(TeamConference);
-            TeamTab.Controls.Add(label2);
-            TeamTab.Controls.Add(label1);
             TeamTab.Controls.Add(TeamBox);
             TeamTab.Location = new Point(4, 24);
             TeamTab.Name = "TeamTab";
@@ -149,25 +126,9 @@
             TeamTab.Text = "Team";
             TeamTab.UseVisualStyleBackColor = true;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(122, 55);
-            label7.Name = "label7";
-            label7.Size = new Size(50, 15);
-            label7.TabIndex = 72;
-            label7.Text = "Team ID";
-            // 
-            // TeamTeamID
-            // 
-            TeamTeamID.Location = new Point(209, 47);
-            TeamTeamID.Name = "TeamTeamID";
-            TeamTeamID.Size = new Size(100, 23);
-            TeamTeamID.TabIndex = 71;
-            // 
             // TeamTeamName
             // 
-            TeamTeamName.Location = new Point(209, 98);
+            TeamTeamName.Location = new Point(171, 22);
             TeamTeamName.Name = "TeamTeamName";
             TeamTeamName.Size = new Size(100, 23);
             TeamTeamName.TabIndex = 53;
@@ -175,110 +136,26 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(104, 106);
+            label3.Location = new Point(72, 30);
             label3.Name = "label3";
             label3.Size = new Size(71, 15);
             label3.TabIndex = 50;
             label3.Text = "Team Name";
             // 
-            // TeamPlayerPosition
-            // 
-            TeamPlayerPosition.Location = new Point(478, 98);
-            TeamPlayerPosition.Name = "TeamPlayerPosition";
-            TeamPlayerPosition.Size = new Size(100, 23);
-            TeamPlayerPosition.TabIndex = 63;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(360, 106);
-            label12.Name = "label12";
-            label12.Size = new Size(85, 15);
-            label12.TabIndex = 60;
-            label12.Text = "Player Position";
-            // 
-            // TeamSeason
-            // 
-            TeamSeason.Location = new Point(478, 210);
-            TeamSeason.Name = "TeamSeason";
-            TeamSeason.Size = new Size(100, 23);
-            TeamSeason.TabIndex = 59;
-            // 
-            // TeamPlayers
-            // 
-            TeamPlayers.Location = new Point(478, 47);
-            TeamPlayers.Name = "TeamPlayers";
-            TeamPlayers.Size = new Size(100, 23);
-            TeamPlayers.TabIndex = 58;
-            // 
-            // TeamPlayedDate
-            // 
-            TeamPlayedDate.Location = new Point(480, 153);
-            TeamPlayedDate.Name = "TeamPlayedDate";
-            TeamPlayedDate.Size = new Size(100, 23);
-            TeamPlayedDate.TabIndex = 57;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(363, 218);
-            label4.Name = "label4";
-            label4.Size = new Size(82, 15);
-            label4.TabIndex = 56;
-            label4.Text = "Season Played";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(373, 55);
-            label5.Name = "label5";
-            label5.Size = new Size(72, 15);
-            label5.TabIndex = 55;
-            label5.Text = "With Players";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(357, 161);
-            label6.Name = "label6";
-            label6.Size = new Size(88, 15);
-            label6.TabIndex = 54;
-            label6.Text = "Played On Date";
-            // 
-            // TeamDivision
-            // 
-            TeamDivision.Location = new Point(209, 210);
-            TeamDivision.Name = "TeamDivision";
-            TeamDivision.Size = new Size(100, 23);
-            TeamDivision.TabIndex = 52;
-            // 
-            // TeamConference
-            // 
-            TeamConference.Location = new Point(209, 154);
-            TeamConference.Name = "TeamConference";
-            TeamConference.Size = new Size(100, 23);
-            TeamConference.TabIndex = 51;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(109, 218);
-            label2.Name = "label2";
-            label2.Size = new Size(62, 15);
-            label2.TabIndex = 49;
-            label2.Text = "In Division";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(90, 162);
-            label1.Name = "label1";
-            label1.Size = new Size(81, 15);
-            label1.TabIndex = 48;
-            label1.Text = "In Conference";
-            // 
             // TeamBox
             // 
+            TeamBox.Controls.Add(textBox1);
+            TeamBox.Controls.Add(label5);
+            TeamBox.Controls.Add(label3);
+            TeamBox.Controls.Add(TeamTeamName);
+            TeamBox.Controls.Add(label1);
+            TeamBox.Controls.Add(label2);
+            TeamBox.Controls.Add(TeamConference);
+            TeamBox.Controls.Add(TeamDivision);
+            TeamBox.Controls.Add(label4);
+            TeamBox.Controls.Add(TeamSeason);
+            TeamBox.Controls.Add(label6);
+            TeamBox.Controls.Add(TeamPlayedDate);
             TeamBox.Location = new Point(38, 28);
             TeamBox.Name = "TeamBox";
             TeamBox.Size = new Size(598, 250);
@@ -287,12 +164,74 @@
             TeamBox.Text = "TeamBox";
             TeamBox.Visible = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(325, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(81, 15);
+            label1.TabIndex = 48;
+            label1.Text = "In Conference";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(81, 81);
+            label2.Name = "label2";
+            label2.Size = new Size(62, 15);
+            label2.TabIndex = 49;
+            label2.Text = "In Division";
+            // 
+            // TeamConference
+            // 
+            TeamConference.Location = new Point(440, 19);
+            TeamConference.Name = "TeamConference";
+            TeamConference.Size = new Size(100, 23);
+            TeamConference.TabIndex = 51;
+            // 
+            // TeamDivision
+            // 
+            TeamDivision.Location = new Point(171, 81);
+            TeamDivision.Name = "TeamDivision";
+            TeamDivision.Size = new Size(100, 23);
+            TeamDivision.TabIndex = 52;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(61, 141);
+            label4.Name = "label4";
+            label4.Size = new Size(82, 15);
+            label4.TabIndex = 56;
+            label4.Text = "Season Played";
+            // 
+            // TeamSeason
+            // 
+            TeamSeason.Location = new Point(171, 138);
+            TeamSeason.Name = "TeamSeason";
+            TeamSeason.Size = new Size(100, 23);
+            TeamSeason.TabIndex = 59;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(325, 78);
+            label6.Name = "label6";
+            label6.Size = new Size(88, 15);
+            label6.TabIndex = 54;
+            label6.Text = "Played On Date";
+            // 
+            // TeamPlayedDate
+            // 
+            TeamPlayedDate.Location = new Point(440, 78);
+            TeamPlayedDate.Name = "TeamPlayedDate";
+            TeamPlayedDate.Size = new Size(100, 23);
+            TeamPlayedDate.TabIndex = 57;
+            // 
             // PlayerTab
             // 
             PlayerTab.Controls.Add(PlayerTeam);
             PlayerTab.Controls.Add(label8);
-            PlayerTab.Controls.Add(label14);
-            PlayerTab.Controls.Add(PlayerPlayerID);
             PlayerTab.Controls.Add(PlayerPlayerName);
             PlayerTab.Controls.Add(label16);
             PlayerTab.Controls.Add(label19);
@@ -329,22 +268,6 @@
             label8.Size = new Size(62, 15);
             label8.TabIndex = 97;
             label8.Text = "In Division";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(117, 52);
-            label14.Name = "label14";
-            label14.Size = new Size(53, 15);
-            label14.TabIndex = 96;
-            label14.Text = "Player ID";
-            // 
-            // PlayerPlayerID
-            // 
-            PlayerPlayerID.Location = new Point(204, 44);
-            PlayerPlayerID.Name = "PlayerPlayerID";
-            PlayerPlayerID.Size = new Size(100, 23);
-            PlayerPlayerID.TabIndex = 95;
             // 
             // PlayerPlayerName
             // 
@@ -457,8 +380,6 @@
             GameTab.Controls.Add(label17);
             GameTab.Controls.Add(Season);
             GameTab.Controls.Add(label9);
-            GameTab.Controls.Add(label10);
-            GameTab.Controls.Add(GameID);
             GameTab.Controls.Add(HomeTeam);
             GameTab.Controls.Add(label11);
             GameTab.Controls.Add(label18);
@@ -503,22 +424,6 @@
             label9.Size = new Size(62, 15);
             label9.TabIndex = 113;
             label9.Text = "In Division";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(116, 64);
-            label10.Name = "label10";
-            label10.Size = new Size(52, 15);
-            label10.TabIndex = 112;
-            label10.Text = "Game ID";
-            // 
-            // GameID
-            // 
-            GameID.Location = new Point(203, 56);
-            GameID.Name = "GameID";
-            GameID.Size = new Size(100, 23);
-            GameID.TabIndex = 111;
             // 
             // HomeTeam
             // 
@@ -636,6 +541,22 @@
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(325, 146);
+            label5.Name = "label5";
+            label5.Size = new Size(57, 15);
+            label5.TabIndex = 60;
+            label5.Text = "Played At";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(440, 143);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 61;
+            // 
             // Search
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -650,7 +571,8 @@
             Text = "Search";
             TabControl.ResumeLayout(false);
             TeamTab.ResumeLayout(false);
-            TeamTab.PerformLayout();
+            TeamBox.ResumeLayout(false);
+            TeamBox.PerformLayout();
             PlayerTab.ResumeLayout(false);
             PlayerTab.PerformLayout();
             GameTab.ResumeLayout(false);
@@ -664,13 +586,9 @@
         private Label label15;
         private TabControl TabControl;
         private TabPage TeamTab;
-        private TextBox TeamPlayerPosition;
-        private Label label12;
         private TextBox TeamSeason;
-        private TextBox TeamPlayers;
         private TextBox TeamPlayedDate;
         private Label label4;
-        private Label label5;
         private Label label6;
         private TextBox TeamTeamName;
         private TextBox TeamDivision;
@@ -680,10 +598,6 @@
         private Label label1;
         private TabPage PlayerTab;
         private TabPage GameTab;
-        private Label label7;
-        private TextBox TeamTeamID;
-        private Label label14;
-        private TextBox PlayerPlayerID;
         private TextBox PlayerPlayerName;
         private Label label16;
         private Label label19;
@@ -701,8 +615,6 @@
         private TextBox PlayerTeam;
         private TextBox Season;
         private Label label9;
-        private Label label10;
-        private TextBox GameID;
         private TextBox HomeTeam;
         private Label label11;
         private Label label18;
@@ -719,5 +631,7 @@
         private GroupBox PlayerBox;
         private GroupBox GameBox;
         private Button SearchButton;
+        private Label label5;
+        private TextBox textBox1;
     }
 }

@@ -14,6 +14,8 @@ namespace CIS560Project
 
         public string currentTable = "";
 
+        public string query = "";
+
         public Search form3 = new();
 
         public NFLDatabase()
@@ -28,57 +30,87 @@ namespace CIS560Project
                 if (b.Name == "ConferenceButton")
                 {
                     currentTable = "fb.Conference";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
                 if (b.Name == "DivisionsButton")
                 {
                     currentTable = "fb.Division";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
                 if (b.Name == "SeasonButton")
                 {
                     currentTable = "fb.Season";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
                 if (b.Name == "TeamsButton")
                 {
                     currentTable = "fb.Team";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
                 if (b.Name == "PlayerContractButton")
                 {
                     currentTable = "fb.PlayerContract";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
                 if (b.Name == "PlayersButton")
                 {
                     currentTable = "fb.Player";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
                 if (b.Name == "ScheduleButton")
                 {
                     currentTable = "fb.Schedule";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
                 if (b.Name == "TeamSeasonButton")
                 {
                     currentTable = "fb.TeamSeason";
-                    LoadTable(currentTable);
+                    LoadTable();
                 }
 
             }
         }
 
-        private void LoadTable(string table)
+        private void LoadTable()
         {
-            string query = $"SELECT * FROM {table}";
+            if (currentTable == "fb.Team")
+            {
+                query = "SELECT T.TeamID, T.TeamName, D.DivisionName, C.ConferenceName\n" +
+                        "FROM fb.Team T\n" +
+                        "INNER JOIN fb.Division D ON D.DivisionID = T.DivisionID\n" +
+                        "INNER JOIN fb.Conference C ON C.ConferenceID = D.ConferenceID;";
+            }
+            else if (currentTable == "fb.Player")
+            {
+                query = "SELECT DISTINCT P.PlayerID, P.PlayerName, P.Position, PC.AgeDuringSeason, T.TeamName, PC.SeasonID AS Season, D.DivisionName, C.ConferenceName\n" +
+                        "FROM fb.Player P\n" +
+                        "INNER JOIN fb.PlayerContract PC ON PC.PlayerID = P.PlayerID\n" +
+                        "INNER JOIN fb.TeamSeason TS ON TS.TeamID = PC.TeamID\n" +
+                        "INNER JOIN fb.Team T ON T.TeamID = TS.TeamID\n" +
+                        "INNER JOIN fb.Division D ON D.DivisionID = T.DivisionID\n" +
+                        "INNER JOIN fb.Conference C ON C.ConferenceID = D.ConferenceID\n" +
+                        "ORDER BY P.PlayerID ASC;";
+            }
+            else if (currentTable == "fb.Schedule")
+            {
+                query = "SELECT G.GameID, T1.TeamName AS HomeTeam, T2.TeamName AS AwayTeam, T3.TeamName AS Winner, G.WinnerScore, G.LoserScore, G.Date, G.Location, G.SeasonID AS Season\n" +
+                        "FROM fb.Schedule G\n" +
+                        "INNER JOIN fb.Team T1 ON T1.TeamID = G.HomeTeamID\n" +
+                        "INNER JOIN fb.Team T2 ON T2.TeamID = G.AwayTeamID\n" +
+                        "INNER JOIN fb.Team T3 ON T3.TeamID = G.WinnerID;";
+            }
+            else
+            {
+                query = $"SELECT * FROM {currentTable};";
+            }
+
             try
             {
                 DataAdapter = new(query, Connection);
@@ -122,8 +154,6 @@ namespace CIS560Project
                     query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
                 }
 
-                
-
                 if (Connection != null)
                 {
                     ExecuteNonQuery(Connection, query);
@@ -150,7 +180,7 @@ namespace CIS560Project
             var cmd = cn.CreateCommand();
             cmd.CommandText = command;
             cmd.ExecuteNonQuery();
-            LoadTable(currentTable);
+            LoadTable();
         }
 
         private void LoadQueryButton_Click(object sender, EventArgs e)
@@ -178,13 +208,19 @@ namespace CIS560Project
 
             using StreamReader sr = new(fileName);
             richTextBox1.Text = sr.ReadToEnd();
+            RunQuery(richTextBox1.Text);
         }
 
         public void RunQueryButton_Click(object sender, EventArgs e)
         {
+            RunQuery(richTextBox1.Text);
+        }
+
+        private void RunQuery(string query)
+        {
             try
             {
-                DataAdapter = new(richTextBox1.Text, Connection);
+                DataAdapter = new(query, Connection);
                 DataTable = new();
                 DataAdapter.Fill(DataTable);
                 dataGridView1.DataSource = DataTable;
