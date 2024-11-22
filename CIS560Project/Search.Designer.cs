@@ -32,6 +32,7 @@
             TabControl = new TabControl();
             TeamTab = new TabPage();
             TeamBox = new GroupBox();
+            label7 = new Label();
             TeamPlayedOn = new TextBox();
             TeamPlayedAt = new ComboBox();
             TeamConference = new ComboBox();
@@ -62,12 +63,13 @@
             label21 = new Label();
             GameTab = new TabPage();
             GameBox = new GroupBox();
+            GameLocation = new ComboBox();
+            label12 = new Label();
+            label10 = new Label();
             label24 = new Label();
             label17 = new Label();
-            GameDivision = new ComboBox();
-            label9 = new Label();
             GameSeason = new ComboBox();
-            Conference = new ComboBox();
+            GameConference = new ComboBox();
             Winner = new ComboBox();
             AwayTeam = new ComboBox();
             HomeTeam = new ComboBox();
@@ -119,6 +121,7 @@
             // 
             // TeamBox
             // 
+            TeamBox.Controls.Add(label7);
             TeamBox.Controls.Add(TeamPlayedOn);
             TeamBox.Controls.Add(TeamPlayedAt);
             TeamBox.Controls.Add(TeamConference);
@@ -138,6 +141,15 @@
             TeamBox.TabStop = false;
             TeamBox.Text = "TeamBox";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(445, 107);
+            label7.Name = "label7";
+            label7.Size = new Size(85, 15);
+            label7.TabIndex = 69;
+            label7.Text = "(yyyy-mm-dd)";
+            // 
             // TeamPlayedOn
             // 
             TeamPlayedOn.Location = new Point(445, 81);
@@ -149,6 +161,7 @@
             // 
             TeamPlayedAt.DropDownStyle = ComboBoxStyle.DropDownList;
             TeamPlayedAt.FormattingEnabled = true;
+            TeamPlayedAt.Items.AddRange(new object[] { "Arlington", "Atlanta", "Baltimore", "Charlotte", "Chicago", "Cincinnati", "Cleveland", "Denver", "Detroit", "East Rutherford", "Foxborough", "Glendale", "Green Bay", "Houston", "Indianapolis", "Inglewood", "Jacksonville", "Kansas City", "Landover", "Las Vegas", "Miami Gardens", "Minneapolis", "Nashville", "New Orleans", "Orchard Park", "Philadelphia", "Pittsburgh", "Santa Clara", "Seattle", "Tampa" });
             TeamPlayedAt.Location = new Point(445, 143);
             TeamPlayedAt.Name = "TeamPlayedAt";
             TeamPlayedAt.Size = new Size(121, 23);
@@ -158,7 +171,7 @@
             // 
             TeamConference.DropDownStyle = ComboBoxStyle.DropDownList;
             TeamConference.FormattingEnabled = true;
-            TeamConference.Items.AddRange(new object[] { "AFC", "NFC" });
+            TeamConference.Items.AddRange(new object[] { "", "AFC", "NFC" });
             TeamConference.Location = new Point(445, 30);
             TeamConference.Name = "TeamConference";
             TeamConference.Size = new Size(121, 23);
@@ -168,7 +181,7 @@
             // 
             TeamSeason.DropDownStyle = ComboBoxStyle.DropDownList;
             TeamSeason.FormattingEnabled = true;
-            TeamSeason.Items.AddRange(new object[] { "2020", "2021", "2022", "2023", "2024" });
+            TeamSeason.Items.AddRange(new object[] { "", "2020", "2021", "2022", "2023", "2024" });
             TeamSeason.Location = new Point(168, 141);
             TeamSeason.Name = "TeamSeason";
             TeamSeason.Size = new Size(121, 23);
@@ -178,7 +191,7 @@
             // 
             TeamDivision.DropDownStyle = ComboBoxStyle.DropDownList;
             TeamDivision.FormattingEnabled = true;
-            TeamDivision.Items.AddRange(new object[] { "AFC North", "AFC East", "AFC South", "AFC West", "NFC North", "NFC East", "NFC South", "NFC West" });
+            TeamDivision.Items.AddRange(new object[] { "", "AFC North", "AFC East", "AFC South", "AFC West", "NFC North", "NFC East", "NFC South", "NFC West" });
             TeamDivision.Location = new Point(168, 81);
             TeamDivision.Name = "TeamDivision";
             TeamDivision.Size = new Size(121, 23);
@@ -188,7 +201,7 @@
             // 
             TeamTeamName.DropDownStyle = ComboBoxStyle.DropDownList;
             TeamTeamName.FormattingEnabled = true;
-            TeamTeamName.Items.AddRange(new object[] { "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
+            TeamTeamName.Items.AddRange(new object[] { "", "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
             TeamTeamName.Location = new Point(168, 30);
             TeamTeamName.Name = "TeamTeamName";
             TeamTeamName.Size = new Size(121, 23);
@@ -308,13 +321,12 @@
             PlayerBox.TabIndex = 100;
             PlayerBox.TabStop = false;
             PlayerBox.Text = "PlayerBox";
-            PlayerBox.Visible = false;
             // 
             // PlayerTeam
             // 
             PlayerTeam.DropDownStyle = ComboBoxStyle.DropDownList;
             PlayerTeam.FormattingEnabled = true;
-            PlayerTeam.Items.AddRange(new object[] { "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
+            PlayerTeam.Items.AddRange(new object[] { "", "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
             PlayerTeam.Location = new Point(460, 30);
             PlayerTeam.Name = "PlayerTeam";
             PlayerTeam.Size = new Size(121, 23);
@@ -324,7 +336,7 @@
             // 
             PlayerDivision.DropDownStyle = ComboBoxStyle.DropDownList;
             PlayerDivision.FormattingEnabled = true;
-            PlayerDivision.Items.AddRange(new object[] { "AFC North", "AFC East", "AFC South", "AFC West", "NFC North", "NFC East", "NFC South", "NFC West" });
+            PlayerDivision.Items.AddRange(new object[] { "", "AFC North", "AFC East", "AFC South", "AFC West", "NFC North", "NFC East", "NFC South", "NFC West" });
             PlayerDivision.Location = new Point(460, 84);
             PlayerDivision.Name = "PlayerDivision";
             PlayerDivision.Size = new Size(121, 23);
@@ -334,7 +346,7 @@
             // 
             PlayerConference.DropDownStyle = ComboBoxStyle.DropDownList;
             PlayerConference.FormattingEnabled = true;
-            PlayerConference.Items.AddRange(new object[] { "AFC", "NFC" });
+            PlayerConference.Items.AddRange(new object[] { "", "AFC", "NFC" });
             PlayerConference.Location = new Point(460, 132);
             PlayerConference.Name = "PlayerConference";
             PlayerConference.Size = new Size(121, 23);
@@ -344,7 +356,7 @@
             // 
             PlayerSeason.DropDownStyle = ComboBoxStyle.DropDownList;
             PlayerSeason.FormattingEnabled = true;
-            PlayerSeason.Items.AddRange(new object[] { "2020", "2021", "2022", "2023", "2024" });
+            PlayerSeason.Items.AddRange(new object[] { "", "2020", "2021", "2022", "2023", "2024" });
             PlayerSeason.Location = new Point(177, 188);
             PlayerSeason.Name = "PlayerSeason";
             PlayerSeason.Size = new Size(121, 23);
@@ -354,7 +366,7 @@
             // 
             PlayerPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             PlayerPosition.FormattingEnabled = true;
-            PlayerPosition.Items.AddRange(new object[] { "G", "TE", "DL", "OLB", "ROLB/LOLB", "ROLB", "SS", "RG/RT", "DT/DE", "LDE/RDE", "LCB/RCB", "MLB", "LCB", "RCB", "RILB", "OT", "LB", "RCB/LCB", "RLB", "RT/LT", "LDE", "OL", "LG", "QB", "LS", "LOLB", "RDT/LDT", "FS", "NT", "DT", "RDE", "C/LG", "RB", "C", "LDT", "RLB/LLB", "LLB", "RG", "DB", "RG/C", "OG", "RLB/MLB", "DE", "ROLB/RILB", "LILB", "P", "RT", "RILB/LILB", "S", "DE/DT", "RT/RG", "K", "RDT", "CB", "WR", "SS/RLB", "WR/QB", "SS/FS", "T", "KB", "LT/RT", "FB", "LT" });
+            PlayerPosition.Items.AddRange(new object[] { "", "G", "TE", "DL", "OLB", "ROLB/LOLB", "ROLB", "SS", "RG/RT", "DT/DE", "LDE/RDE", "LCB/RCB", "MLB", "LCB", "RCB", "RILB", "OT", "LB", "RCB/LCB", "RLB", "RT/LT", "LDE", "OL", "LG", "QB", "LS", "LOLB", "RDT/LDT", "FS", "NT", "DT", "RDE", "C/LG", "RB", "C", "LDT", "RLB/LLB", "LLB", "RG", "DB", "RG/C", "OG", "RLB/MLB", "DE", "ROLB/RILB", "LILB", "P", "RT", "RILB/LILB", "S", "DE/DT", "RT/RG", "K", "RDT", "CB", "WR", "SS/RLB", "WR/QB", "SS/FS", "T", "KB", "LT/RT", "FB", "LT" });
             PlayerPosition.Location = new Point(177, 132);
             PlayerPosition.Name = "PlayerPosition";
             PlayerPosition.Size = new Size(121, 23);
@@ -423,12 +435,13 @@
             // 
             // GameBox
             // 
+            GameBox.Controls.Add(GameLocation);
+            GameBox.Controls.Add(label12);
+            GameBox.Controls.Add(label10);
             GameBox.Controls.Add(label24);
             GameBox.Controls.Add(label17);
-            GameBox.Controls.Add(GameDivision);
-            GameBox.Controls.Add(label9);
             GameBox.Controls.Add(GameSeason);
-            GameBox.Controls.Add(Conference);
+            GameBox.Controls.Add(GameConference);
             GameBox.Controls.Add(Winner);
             GameBox.Controls.Add(AwayTeam);
             GameBox.Controls.Add(HomeTeam);
@@ -443,12 +456,39 @@
             GameBox.TabIndex = 116;
             GameBox.TabStop = false;
             GameBox.Text = "GameBox";
-            GameBox.Visible = false;
+            // 
+            // GameLocation
+            // 
+            GameLocation.DropDownStyle = ComboBoxStyle.DropDownList;
+            GameLocation.FormattingEnabled = true;
+            GameLocation.Items.AddRange(new object[] { "", "Arlington", "Atlanta", "Baltimore", "Charlotte", "Chicago", "Cincinnati", "Cleveland", "Denver", "Detroit", "East Rutherford", "Foxborough", "Glendale", "Green Bay", "Houston", "Indianapolis", "Inglewood", "Jacksonville", "Kansas City", "Landover", "Las Vegas", "Miami Gardens", "Minneapolis", "Nashville", "New Orleans", "Orchard Park", "Philadelphia", "Pittsburgh", "Santa Clara", "Seattle", "Tampa" });
+            GameLocation.Location = new Point(457, 158);
+            GameLocation.Name = "GameLocation";
+            GameLocation.Size = new Size(121, 23);
+            GameLocation.TabIndex = 120;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(352, 158);
+            label12.Name = "label12";
+            label12.Size = new Size(53, 15);
+            label12.TabIndex = 119;
+            label12.Text = "Location";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(457, 122);
+            label10.Name = "label10";
+            label10.Size = new Size(85, 15);
+            label10.TabIndex = 117;
+            label10.Text = "(yyyy-mm-dd)";
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(361, 96);
+            label24.Location = new Point(361, 48);
             label24.Name = "label24";
             label24.Size = new Size(44, 15);
             label24.TabIndex = 99;
@@ -457,56 +497,37 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(374, 147);
+            label17.Location = new Point(374, 99);
             label17.Name = "label17";
             label17.Size = new Size(31, 15);
             label17.TabIndex = 115;
             label17.Text = "Date";
             // 
-            // GameDivision
-            // 
-            GameDivision.DropDownStyle = ComboBoxStyle.DropDownList;
-            GameDivision.FormattingEnabled = true;
-            GameDivision.Items.AddRange(new object[] { "AFC North", "AFC East", "AFC South", "AFC West", "NFC North", "NFC East", "NFC South", "NFC West" });
-            GameDivision.Location = new Point(457, 37);
-            GameDivision.Name = "GameDivision";
-            GameDivision.Size = new Size(121, 23);
-            GameDivision.TabIndex = 116;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(343, 42);
-            label9.Name = "label9";
-            label9.Size = new Size(62, 15);
-            label9.TabIndex = 113;
-            label9.Text = "In Division";
-            // 
             // GameSeason
             // 
             GameSeason.DropDownStyle = ComboBoxStyle.DropDownList;
             GameSeason.FormattingEnabled = true;
-            GameSeason.Items.AddRange(new object[] { "2020", "2021", "2022", "2023", "2024" });
-            GameSeason.Location = new Point(457, 93);
+            GameSeason.Items.AddRange(new object[] { "", "2020", "2021", "2022", "2023", "2024" });
+            GameSeason.Location = new Point(457, 45);
             GameSeason.Name = "GameSeason";
             GameSeason.Size = new Size(121, 23);
             GameSeason.TabIndex = 115;
             // 
-            // Conference
+            // GameConference
             // 
-            Conference.DropDownStyle = ComboBoxStyle.DropDownList;
-            Conference.FormattingEnabled = true;
-            Conference.Items.AddRange(new object[] { "AFC", "NFC" });
-            Conference.Location = new Point(178, 203);
-            Conference.Name = "Conference";
-            Conference.Size = new Size(121, 23);
-            Conference.TabIndex = 114;
+            GameConference.DropDownStyle = ComboBoxStyle.DropDownList;
+            GameConference.FormattingEnabled = true;
+            GameConference.Items.AddRange(new object[] { "", "AFC", "NFC" });
+            GameConference.Location = new Point(178, 203);
+            GameConference.Name = "GameConference";
+            GameConference.Size = new Size(121, 23);
+            GameConference.TabIndex = 114;
             // 
             // Winner
             // 
             Winner.DropDownStyle = ComboBoxStyle.DropDownList;
             Winner.FormattingEnabled = true;
-            Winner.Items.AddRange(new object[] { "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
+            Winner.Items.AddRange(new object[] { "", "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
             Winner.Location = new Point(178, 149);
             Winner.Name = "Winner";
             Winner.Size = new Size(121, 23);
@@ -516,7 +537,7 @@
             // 
             AwayTeam.DropDownStyle = ComboBoxStyle.DropDownList;
             AwayTeam.FormattingEnabled = true;
-            AwayTeam.Items.AddRange(new object[] { "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
+            AwayTeam.Items.AddRange(new object[] { "", "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
             AwayTeam.Location = new Point(178, 93);
             AwayTeam.Name = "AwayTeam";
             AwayTeam.Size = new Size(121, 23);
@@ -526,7 +547,7 @@
             // 
             HomeTeam.DropDownStyle = ComboBoxStyle.DropDownList;
             HomeTeam.FormattingEnabled = true;
-            HomeTeam.Items.AddRange(new object[] { "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
+            HomeTeam.Items.AddRange(new object[] { "", "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
             HomeTeam.Location = new Point(178, 42);
             HomeTeam.Name = "HomeTeam";
             HomeTeam.Size = new Size(121, 23);
@@ -534,7 +555,7 @@
             // 
             // GameDate
             // 
-            GameDate.Location = new Point(457, 144);
+            GameDate.Location = new Point(457, 96);
             GameDate.Name = "GameDate";
             GameDate.Size = new Size(121, 23);
             GameDate.TabIndex = 110;
@@ -595,6 +616,7 @@
             Controls.Add(label13);
             Name = "Search";
             Text = "Search";
+            FormClosing += MyForm_FormClosing;
             TabControl.ResumeLayout(false);
             TeamTab.ResumeLayout(false);
             TeamBox.ResumeLayout(false);
@@ -628,7 +650,6 @@
         private Label label25;
         private Label label26;
         private Label label8;
-        private Label label9;
         private Label label11;
         private Label label18;
         private Label label20;
@@ -656,9 +677,12 @@
         private ComboBox HomeTeam;
         private ComboBox AwayTeam;
         private ComboBox Winner;
-        private ComboBox Conference;
+        private ComboBox GameConference;
         private ComboBox GameSeason;
-        private ComboBox GameDivision;
         private TextBox TeamPlayedOn;
+        private Label label7;
+        private Label label10;
+        private Label label12;
+        private ComboBox GameLocation;
     }
 }
