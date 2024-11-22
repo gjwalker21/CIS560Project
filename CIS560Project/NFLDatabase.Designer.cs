@@ -49,13 +49,15 @@
             toolStripMenuItem1 = new ToolStripMenuItem();
             button5 = new Button();
             SearchButton = new Button();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // ConferenceButton
             // 
-            ConferenceButton.Location = new Point(98, 58);
+            ConferenceButton.Location = new Point(91, 76);
             ConferenceButton.Name = "ConferenceButton";
             ConferenceButton.Size = new Size(96, 23);
             ConferenceButton.TabIndex = 0;
@@ -76,7 +78,7 @@
             // 
             // DivisionsButton
             // 
-            DivisionsButton.Location = new Point(98, 141);
+            DivisionsButton.Location = new Point(91, 159);
             DivisionsButton.Name = "DivisionsButton";
             DivisionsButton.Size = new Size(96, 23);
             DivisionsButton.TabIndex = 2;
@@ -86,7 +88,7 @@
             // 
             // TeamsButton
             // 
-            TeamsButton.Location = new Point(98, 225);
+            TeamsButton.Location = new Point(91, 243);
             TeamsButton.Name = "TeamsButton";
             TeamsButton.Size = new Size(96, 23);
             TeamsButton.TabIndex = 3;
@@ -96,7 +98,7 @@
             // 
             // SeasonButton
             // 
-            SeasonButton.Location = new Point(98, 309);
+            SeasonButton.Location = new Point(91, 327);
             SeasonButton.Name = "SeasonButton";
             SeasonButton.Size = new Size(96, 23);
             SeasonButton.TabIndex = 4;
@@ -106,7 +108,7 @@
             // 
             // PlayersButton
             // 
-            PlayersButton.Location = new Point(291, 58);
+            PlayersButton.Location = new Point(284, 76);
             PlayersButton.Name = "PlayersButton";
             PlayersButton.Size = new Size(96, 23);
             PlayersButton.TabIndex = 5;
@@ -116,7 +118,7 @@
             // 
             // PlayerContractButton
             // 
-            PlayerContractButton.Location = new Point(291, 141);
+            PlayerContractButton.Location = new Point(284, 159);
             PlayerContractButton.Name = "PlayerContractButton";
             PlayerContractButton.Size = new Size(96, 23);
             PlayerContractButton.TabIndex = 6;
@@ -126,7 +128,7 @@
             // 
             // ScheduleButton
             // 
-            ScheduleButton.Location = new Point(291, 225);
+            ScheduleButton.Location = new Point(284, 243);
             ScheduleButton.Name = "ScheduleButton";
             ScheduleButton.Size = new Size(96, 23);
             ScheduleButton.TabIndex = 7;
@@ -136,7 +138,7 @@
             // 
             // TeamSeasonButton
             // 
-            TeamSeasonButton.Location = new Point(291, 309);
+            TeamSeasonButton.Location = new Point(284, 327);
             TeamSeasonButton.Name = "TeamSeasonButton";
             TeamSeasonButton.Size = new Size(96, 23);
             TeamSeasonButton.TabIndex = 8;
@@ -146,7 +148,7 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(691, 58);
+            richTextBox1.Location = new Point(712, 77);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(677, 274);
             richTextBox1.TabIndex = 9;
@@ -154,7 +156,7 @@
             // 
             // HomeTeamPerformance
             // 
-            HomeTeamPerformance.Location = new Point(476, 58);
+            HomeTeamPerformance.Location = new Point(469, 76);
             HomeTeamPerformance.Name = "HomeTeamPerformance";
             HomeTeamPerformance.Size = new Size(164, 23);
             HomeTeamPerformance.TabIndex = 10;
@@ -164,7 +166,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(476, 141);
+            button2.Location = new Point(469, 159);
             button2.Name = "button2";
             button2.Size = new Size(96, 23);
             button2.TabIndex = 11;
@@ -173,7 +175,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(476, 225);
+            button3.Location = new Point(469, 243);
             button3.Name = "button3";
             button3.Size = new Size(96, 23);
             button3.TabIndex = 12;
@@ -182,7 +184,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(476, 309);
+            button4.Location = new Point(469, 327);
             button4.Name = "button4";
             button4.Size = new Size(96, 23);
             button4.TabIndex = 13;
@@ -191,7 +193,7 @@
             // 
             // RunQueryButton
             // 
-            RunQueryButton.Location = new Point(1237, 352);
+            RunQueryButton.Location = new Point(1258, 376);
             RunQueryButton.Name = "RunQueryButton";
             RunQueryButton.Size = new Size(131, 26);
             RunQueryButton.TabIndex = 14;
@@ -240,11 +242,31 @@
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(91, 27);
+            label1.Name = "label1";
+            label1.Size = new Size(40, 15);
+            label1.TabIndex = 19;
+            label1.Text = "Tables";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(712, 27);
+            label2.Name = "label2";
+            label2.Size = new Size(63, 15);
+            label2.TabIndex = 20;
+            label2.Text = "SQL Query";
+            // 
             // NFLDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1431, 819);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(SearchButton);
             Controls.Add(button5);
             Controls.Add(RunQueryButton);
@@ -267,12 +289,12 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button ConferenceButton;
-        private DataGridView dataGridView1;
         private Button DivisionsButton;
         private Button TeamsButton;
         private Button SeasonButton;
@@ -291,5 +313,8 @@
         private ToolStripMenuItem addRowToolStripMenuItem;
         private Button button5;
         private Button SearchButton;
+        private Label label1;
+        private Label label2;
+        public DataGridView dataGridView1;
     }
 }

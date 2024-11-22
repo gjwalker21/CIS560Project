@@ -8,13 +8,13 @@ namespace CIS560Project
     {
         public SqlConnection? Connection { get; set; }
 
-        private SqlDataAdapter? dataAdapter;
+        public SqlDataAdapter? DataAdapter { get; set; }
 
-        private DataTable? dataTable;
+        public DataTable? DataTable { get; set; }
 
-        private string currentTable = "";
+        public string currentTable = "";
 
-        private readonly Search form3 = new();
+        public Search form3 = new();
 
         public NFLDatabase()
         {
@@ -81,10 +81,10 @@ namespace CIS560Project
             string query = $"SELECT * FROM {table}";
             try
             {
-                dataAdapter = new(query, Connection);
-                dataTable = new();
-                dataAdapter.Fill(dataTable);
-                dataGridView1.DataSource = dataTable;
+                DataAdapter = new(query, Connection);
+                DataTable = new();
+                DataAdapter.Fill(DataTable);
+                dataGridView1.DataSource = DataTable;
             }
             catch (Exception ex)
             {
@@ -94,34 +94,41 @@ namespace CIS560Project
 
         private void DeleteRow_Click(object sender, EventArgs e)
         {
-            string query;
-            string rowID = currentTable switch
+            if (currentTable != "fb.Conference" 
+                || currentTable != "fb.Division" 
+                || currentTable != "fb.Team")
             {
-                "fb.Conference" => "ConferenceID",
-                "fb.Division" => "DivisionID",
-                "fb.Season" => "SeasonID",
-                "fb.Schedule" => "ScheduleID",
-                "fb.PlayerContract" => "PlayerContractID",
-                "fb.TeamSeason" => "TeamSeasonID",
-                "fb.Player" => "PlayerID",
-                "fb.Team" => "TeamID",
-                _ => ""
-            };
+                string query;
+                string rowID = currentTable switch
+                {
+                    "fb.Season" => "SeasonID",
+                    "fb.Schedule" => "GameID",
+                    "fb.PlayerContract" => "PlayerContractID",
+                    "fb.TeamSeason" => "TeamSeasonID",
+                    "fb.Player" => "PlayerID",
+                    _ => ""
+                };
 
-            query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
+                query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentRow.Index + 1}";
 
-            if (Connection != null)
-            {
-                ExecuteNonQuery(Connection, query);
+                if (Connection != null)
+                {
+                    ExecuteNonQuery(Connection, query);
+                }
             }
         }
 
         private void AddRow_Click(object sender, EventArgs e)
         {
-            if (dataTable != null && dataAdapter != null)
+            if (currentTable != "fb.Conference"
+                || currentTable != "fb.Division"
+                || currentTable != "fb.Team")
             {
-                DataRow newRow = dataTable.NewRow();
-                dataTable.Rows.Add(newRow);
+                if (DataTable != null && DataAdapter != null)
+                {
+                    DataRow newRow = DataTable.NewRow();
+                    DataTable.Rows.Add(newRow);
+                }
             }
         }
 
@@ -140,36 +147,34 @@ namespace CIS560Project
             {
                 if (b.Name == "HomeTeamPerformance")
                 {
-                    fileName = "HomeTeamPerformance.txt";
+                    fileName = "HomeTeamPerformance.sql";
                 }
-                /*
-                if (b.Name == "HomeTeamPerformance")
+                if (b.Name == "ConferenceRank")
                 {
-                    fileName = "HomeTeamPerformance.txt";
+                    fileName = "Conf_rank.sql";
                 }
-                if (b.Name == "HomeTeamPerformance")
+                if (b.Name == "AverageAge")
                 {
-                    fileName = "HomeTeamPerformance.txt";
+                    fileName = "AVG_agePos.sql";
                 }
-                if (b.Name == "HomeTeamPerformance")
+                if (b.Name == "AverageWins")
                 {
-                    fileName = "HomeTeamPerformance.txt";
+                    fileName = "AVG_wins_3.sql";
                 }
-                */
             }
 
             using StreamReader sr = new(fileName);
             richTextBox1.Text = sr.ReadToEnd();
         }
 
-        private void RunQueryButton_Click(object sender, EventArgs e)
+        public void RunQueryButton_Click(object sender, EventArgs e)
         {
             try
             {
-                dataAdapter = new(richTextBox1.Text, Connection);
-                dataTable = new();
-                dataAdapter.Fill(dataTable);
-                dataGridView1.DataSource = dataTable;
+                DataAdapter = new(richTextBox1.Text, Connection);
+                DataTable = new();
+                DataAdapter.Fill(DataTable);
+                dataGridView1.DataSource = DataTable;
             }
             catch (Exception ex)
             {
@@ -188,17 +193,17 @@ namespace CIS560Project
         private void Finalize_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentCell.Value != null
-                && dataAdapter != null
-                && dataTable != null
+                && DataAdapter != null
+                && DataTable != null
                 && BindingContext != null
                 && dataGridView1.IsCurrentRowDirty == false)
             {
                 try
                 {
                     dataGridView1.EndEdit();
-                    BindingContext[dataTable].EndCurrentEdit();
-                    SqlCommandBuilder commandBuilder = new(dataAdapter);
-                    dataAdapter.Update(dataTable);
+                    BindingContext[DataTable].EndCurrentEdit();
+                    SqlCommandBuilder commandBuilder = new(DataAdapter);
+                    DataAdapter.Update(DataTable);
                 }
                 catch (Exception ex)
                 {

@@ -23,7 +23,7 @@ namespace CIS560Project
 
         private string? password;
 
-        private readonly NFLDatabase form2 = new();
+        public static readonly NFLDatabase form2 = new();
 
         private void LoginToServer()
         {
