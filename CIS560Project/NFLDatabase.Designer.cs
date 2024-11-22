@@ -45,10 +45,11 @@
             contextMenuStrip1 = new ContextMenuStrip(components);
             addRowToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
-            button5 = new Button();
             SearchButton = new Button();
             label1 = new Label();
             label2 = new Label();
+            AddRowButton = new Button();
+            DeleteRowButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
@@ -203,16 +204,6 @@
             toolStripMenuItem1.Text = "Delete Row";
             toolStripMenuItem1.Click += DeleteRow_Click;
             // 
-            // button5
-            // 
-            button5.Location = new Point(1026, 420);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 31);
-            button5.TabIndex = 17;
-            button5.Text = "Finalize Changes";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += Finalize_Click;
-            // 
             // SearchButton
             // 
             SearchButton.Location = new Point(1026, 753);
@@ -243,15 +234,35 @@
             label2.TabIndex = 20;
             label2.Text = "SQL Query";
             // 
+            // AddRowButton
+            // 
+            AddRowButton.Location = new Point(1026, 420);
+            AddRowButton.Name = "AddRowButton";
+            AddRowButton.Size = new Size(85, 23);
+            AddRowButton.TabIndex = 21;
+            AddRowButton.Text = "Add Row";
+            AddRowButton.UseVisualStyleBackColor = true;
+            AddRowButton.Click += AddRowButton_Click;
+            // 
+            // DeleteRowButton
+            // 
+            DeleteRowButton.Location = new Point(1026, 464);
+            DeleteRowButton.Name = "DeleteRowButton";
+            DeleteRowButton.Size = new Size(85, 23);
+            DeleteRowButton.TabIndex = 22;
+            DeleteRowButton.Text = "Delete Row";
+            DeleteRowButton.UseVisualStyleBackColor = true;
+            // 
             // NFLDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1431, 819);
+            Controls.Add(DeleteRowButton);
+            Controls.Add(AddRowButton);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(SearchButton);
-            Controls.Add(button5);
             Controls.Add(RunQueryButton);
             Controls.Add(AverageWins);
             Controls.Add(AverageAge);
@@ -290,10 +301,11 @@
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem addRowToolStripMenuItem;
-        private Button button5;
         private Button SearchButton;
         private Label label1;
         private Label label2;
         public DataGridView dataGridView1;
+        private Button AddRowButton;
+        private Button DeleteRowButton;
     }
 }

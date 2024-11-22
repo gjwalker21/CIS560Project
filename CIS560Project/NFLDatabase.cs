@@ -18,6 +18,8 @@ namespace CIS560Project
 
         public Search form3 = new();
 
+        public Add form4 = new();
+
         public NFLDatabase()
         {
             InitializeComponent();
@@ -78,7 +80,7 @@ namespace CIS560Project
             }
         }
 
-        private void LoadTable()
+        public void LoadTable()
         {
             if (currentTable == "fb.Team")
             {
@@ -126,33 +128,21 @@ namespace CIS560Project
 
         private void DeleteRow_Click(object sender, EventArgs e)
         {
-            if (currentTable != "fb.Conference" 
-                || currentTable != "fb.Division" 
-                || currentTable != "fb.Team")
+            if (currentTable != "fb.Conference"
+                && currentTable != "fb.Division"
+                && currentTable != "fb.Team")
             {
                 string query;
                 string rowID = currentTable switch
                 {
                     "fb.Season" => "SeasonID",
                     "fb.Schedule" => "GameID",
-                    "fb.PlayerContract" => "PlayerID",
-                    "fb.TeamSeason" => "TeamID",
                     "fb.Player" => "PlayerID",
                     _ => ""
                 };
 
-                if (currentTable == "fb.PlayerContract")
-                {
-                    query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
-                }
-                else if (currentTable == "fb.TeamSeason")
-                {
-                    query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
-                }
-                else
-                {
-                    query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
-                }
+                query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentRow.Cells[0]}";
+
 
                 if (Connection != null)
                 {
@@ -263,6 +253,11 @@ namespace CIS560Project
         private void SearchButton_Click(object sender, EventArgs e)
         {
             form3.Show();
+        }
+
+        private void AddRowButton_Click(object sender, EventArgs e)
+        {
+            form4.Show();
         }
     }
 }

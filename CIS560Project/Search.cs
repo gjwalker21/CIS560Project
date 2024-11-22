@@ -146,7 +146,7 @@ namespace CIS560Project
         private string PlayerSearch()
         {
             bool goAhead = false;
-            foreach (Control control in TeamBox.Controls)
+            foreach (Control control in PlayerBox.Controls)
             {
                 if (control is ComboBox box)
                 {
@@ -246,7 +246,7 @@ namespace CIS560Project
         private string GameSearch()
         {
             bool goAhead = false;
-            foreach (Control control in TeamBox.Controls)
+            foreach (Control control in GameBox.Controls)
             {
                 if (control is ComboBox box)
                 {
