@@ -103,13 +103,26 @@ namespace CIS560Project
                 {
                     "fb.Season" => "SeasonID",
                     "fb.Schedule" => "GameID",
-                    "fb.PlayerContract" => "PlayerContractID",
-                    "fb.TeamSeason" => "TeamSeasonID",
+                    "fb.PlayerContract" => "PlayerID",
+                    "fb.TeamSeason" => "TeamID",
                     "fb.Player" => "PlayerID",
                     _ => ""
                 };
 
-                query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentRow.Index + 1}";
+                if (currentTable == "fb.PlayerContract")
+                {
+                    query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
+                }
+                else if (currentTable == "fb.TeamSeason")
+                {
+                    query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
+                }
+                else
+                {
+                    query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentCell.Value}";
+                }
+
+                
 
                 if (Connection != null)
                 {

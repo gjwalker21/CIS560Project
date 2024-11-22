@@ -50,21 +50,32 @@ namespace CIS560Project
 
         private string TeamSearch()
         {
+            StringBuilder b = new();
             List<string> list = [];
             foreach (TextBox box in TeamBox.Controls)
             {
-                list.Add(box.Text);
+                if (box.Text == null)
+                {
+                    list.Add("*");
+                }
+                else
+                {
+                    list.Add(box.Text);
+                }
             }
-            return "SELECT *\n" +
-                "FROM fb.Team T\n" +
-                "JOIN fb.Division D ON D.DivisionID = T.DivisionID" +
-                "JOIN fb.Conference C ON C.ConferenceID = D.ConferenceID" +
-                "JOIN fb.Schedule S ON S.ScheduleID = T.DivisionID" +
-                "JOIN fb.TeamSeason TS ON TS.TeamID = T.TeamID" +
-                "JOIN fb.Division D ON D.DivisionID = T.DivisionID" +
-                "JOIN fb.Division D ON D.DivisionID = T.DivisionID" +
-                "JOIN fb.Division D ON D.DivisionID = T.DivisionID" +
-                "WHERE ";
+            b.Append("SELECT T.TeamID, T.DivisionID, T.TeamName");
+            /*
+            "FROM fb.Team T\n" +
+            "JOIN fb.Division D ON D.DivisionID = T.DivisionID\n" +
+            "JOIN fb.Conference C ON C.ConferenceID = D.ConferenceID\n" +
+            "JOIN fb.Schedule S ON S.WinnerID = T.TeamID\n" +
+            "JOIN fb.TeamSeason TS ON TS.TeamID = T.TeamID\n" +
+            "JOIN fb.PlayerContract PC ON PC.TeamID = TS.TeamID\n" +
+            "JOIN fb.Player P ON P.PlayerID = PC.PlayerID\n" +
+            "JOIN fb.Season SE ON SE.SeasonID = S.SeasonID\n" +
+            $"WHERE T.TeamID = {TeamTeamID}";
+            */
+            return b.ToString();
         }
 
         private string PlayerSearch()
