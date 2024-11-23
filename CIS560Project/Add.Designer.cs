@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TabControl = new TabControl();
+            AddTab = new TabControl();
             PlayerTab = new TabPage();
             AddPlayerButton = new Button();
             PlayerBox = new GroupBox();
@@ -55,29 +55,36 @@
             label24 = new Label();
             label17 = new Label();
             GameSeason = new ComboBox();
-            Winner = new ComboBox();
+            WinnerComboBox = new ComboBox();
             AwayTeam = new ComboBox();
             HomeTeam = new ComboBox();
             GameDate = new TextBox();
             label11 = new Label();
             label20 = new Label();
             label18 = new Label();
-            TabControl.SuspendLayout();
+            SeasonTab = new TabPage();
+            label3 = new Label();
+            SeasonSeason = new TextBox();
+            AddSeasonButton = new Button();
+            label4 = new Label();
+            AddTab.SuspendLayout();
             PlayerTab.SuspendLayout();
             PlayerBox.SuspendLayout();
             GameTab.SuspendLayout();
             GameBox.SuspendLayout();
+            SeasonTab.SuspendLayout();
             SuspendLayout();
             // 
-            // TabControl
+            // AddTab
             // 
-            TabControl.Controls.Add(PlayerTab);
-            TabControl.Controls.Add(GameTab);
-            TabControl.Location = new Point(46, 53);
-            TabControl.Name = "TabControl";
-            TabControl.SelectedIndex = 0;
-            TabControl.Size = new Size(696, 339);
-            TabControl.TabIndex = 54;
+            AddTab.Controls.Add(PlayerTab);
+            AddTab.Controls.Add(GameTab);
+            AddTab.Controls.Add(SeasonTab);
+            AddTab.Location = new Point(46, 53);
+            AddTab.Name = "AddTab";
+            AddTab.SelectedIndex = 0;
+            AddTab.Size = new Size(696, 339);
+            AddTab.TabIndex = 54;
             // 
             // PlayerTab
             // 
@@ -243,7 +250,7 @@
             GameBox.Controls.Add(label24);
             GameBox.Controls.Add(label17);
             GameBox.Controls.Add(GameSeason);
-            GameBox.Controls.Add(Winner);
+            GameBox.Controls.Add(WinnerComboBox);
             GameBox.Controls.Add(AwayTeam);
             GameBox.Controls.Add(HomeTeam);
             GameBox.Controls.Add(GameDate);
@@ -345,15 +352,15 @@
             GameSeason.Size = new Size(121, 23);
             GameSeason.TabIndex = 115;
             // 
-            // Winner
+            // WinnerComboBox
             // 
-            Winner.DropDownStyle = ComboBoxStyle.DropDownList;
-            Winner.FormattingEnabled = true;
-            Winner.Items.AddRange(new object[] { "", "Arizona Cardinals", "Atlanta Falcons", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Chargers", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Commanders" });
-            Winner.Location = new Point(178, 149);
-            Winner.Name = "Winner";
-            Winner.Size = new Size(121, 23);
-            Winner.TabIndex = 113;
+            WinnerComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            WinnerComboBox.FormattingEnabled = true;
+            WinnerComboBox.Location = new Point(178, 149);
+            WinnerComboBox.Name = "WinnerComboBox";
+            WinnerComboBox.Size = new Size(121, 23);
+            WinnerComboBox.TabIndex = 113;
+            WinnerComboBox.DropDown += WinnerComboBox_DropDown;
             // 
             // AwayTeam
             // 
@@ -409,28 +416,79 @@
             label18.TabIndex = 109;
             label18.Text = "Winner";
             // 
+            // SeasonTab
+            // 
+            SeasonTab.Controls.Add(label4);
+            SeasonTab.Controls.Add(label3);
+            SeasonTab.Controls.Add(SeasonSeason);
+            SeasonTab.Controls.Add(AddSeasonButton);
+            SeasonTab.Location = new Point(4, 24);
+            SeasonTab.Name = "SeasonTab";
+            SeasonTab.Padding = new Padding(3);
+            SeasonTab.Size = new Size(688, 311);
+            SeasonTab.TabIndex = 3;
+            SeasonTab.Text = "Season";
+            SeasonTab.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(262, 91);
+            label3.Name = "label3";
+            label3.Size = new Size(146, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Enter Starting Season Year:";
+            // 
+            // SeasonSeason
+            // 
+            SeasonSeason.Location = new Point(262, 135);
+            SeasonSeason.Name = "SeasonSeason";
+            SeasonSeason.Size = new Size(100, 23);
+            SeasonSeason.TabIndex = 1;
+            // 
+            // AddSeasonButton
+            // 
+            AddSeasonButton.Location = new Point(298, 243);
+            AddSeasonButton.Name = "AddSeasonButton";
+            AddSeasonButton.Size = new Size(75, 23);
+            AddSeasonButton.TabIndex = 0;
+            AddSeasonButton.Text = "Add Season";
+            AddSeasonButton.UseVisualStyleBackColor = true;
+            AddSeasonButton.Click += AddSeasonButton_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(381, 138);
+            label4.Name = "label4";
+            label4.Size = new Size(39, 15);
+            label4.TabIndex = 3;
+            label4.Text = "(yyyy)";
+            // 
             // Add
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(TabControl);
+            Controls.Add(AddTab);
             Name = "Add";
             Text = "Add";
             FormClosing += MyForm_FormClosing;
-            TabControl.ResumeLayout(false);
+            AddTab.ResumeLayout(false);
             PlayerTab.ResumeLayout(false);
             PlayerBox.ResumeLayout(false);
             PlayerBox.PerformLayout();
             GameTab.ResumeLayout(false);
             GameBox.ResumeLayout(false);
             GameBox.PerformLayout();
+            SeasonTab.ResumeLayout(false);
+            SeasonTab.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl TabControl;
+        private TabControl AddTab;
         private TabPage PlayerTab;
         private Label label26;
         private GroupBox PlayerBox;
@@ -451,7 +509,7 @@
         private Label label24;
         private Label label17;
         private ComboBox GameSeason;
-        private ComboBox Winner;
+        private ComboBox WinnerComboBox;
         private ComboBox AwayTeam;
         private ComboBox HomeTeam;
         private TextBox GameDate;
@@ -464,5 +522,10 @@
         private Label label2;
         private TextBox LoserScore;
         private TextBox WinnerScore;
+        private TabPage SeasonTab;
+        private Button AddSeasonButton;
+        private TextBox SeasonSeason;
+        private Label label3;
+        private Label label4;
     }
 }

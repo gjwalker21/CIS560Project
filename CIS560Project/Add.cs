@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CIS560Project
 {
@@ -18,6 +19,8 @@ namespace CIS560Project
         {
             InitializeComponent();
         }
+
+
 
         private string AddPlayer()
         {
@@ -143,7 +146,7 @@ namespace CIS560Project
                     b.Append($"WHERE TeamName = '{AwayTeam.SelectedItem?.ToString()}'),\n");
                     b.Append("(SELECT TeamID\n" +
                              "FROM fb.Team\n");
-                    b.Append($"WHERE TeamName = '{Winner.SelectedItem?.ToString()}'),\n");
+                    b.Append($"WHERE TeamName = '{WinnerComboBox.SelectedItem?.ToString()}'),\n");
                     b.Append($"{WinnerScore.Text},\n");
                     b.Append($"{LoserScore.Text},\n");
                     b.Append($"'{GameDate.Text}',\n");
@@ -166,14 +169,14 @@ namespace CIS560Project
                     && !string.IsNullOrWhiteSpace(GameSeason.SelectedItem?.ToString())
                     && HomeTeam.SelectedItem?.ToString() != AwayTeam.SelectedItem?.ToString())
                 {
-                    if (string.IsNullOrWhiteSpace(Winner.SelectedItem?.ToString())
+                    if (string.IsNullOrWhiteSpace(WinnerComboBox.SelectedItem?.ToString())
                     && string.IsNullOrWhiteSpace(WinnerScore.Text)
                     && string.IsNullOrWhiteSpace(LoserScore.Text))
                     {
                         ExecuteNonQuery(Login.form2.Connection, AddGame(false));
                         MessageBox.Show("Game added successfully!");
                     }
-                    else if (!string.IsNullOrWhiteSpace(Winner.SelectedItem?.ToString())
+                    else if (!string.IsNullOrWhiteSpace(WinnerComboBox.SelectedItem?.ToString())
                         && !string.IsNullOrWhiteSpace(WinnerScore.Text)
                         && !string.IsNullOrWhiteSpace(LoserScore.Text))
                     {
@@ -189,8 +192,8 @@ namespace CIS560Project
                 {
                     MessageBox.Show("Invalid values for field(s)");
                 }
-            } 
-        }   
+            }
+        }
 
         private void MyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -202,8 +205,49 @@ namespace CIS560Project
         {
             var cmd = cn.CreateCommand();
             cmd.CommandText = command;
-            cmd.ExecuteNonQuery();
-            Login.form2.LoadTable();
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Login.form2.LoadTable();
+                MessageBox.Show("Season added successfully!");
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+        }
+
+        private void WinnerComboBox_DropDown(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(HomeTeam.SelectedItem?.ToString())
+                && !string.IsNullOrEmpty(AwayTeam.SelectedItem?.ToString()))
+            {
+                WinnerComboBox.Items.Clear();
+                WinnerComboBox.Items.Add("");
+                WinnerComboBox.Items.Add(HomeTeam.SelectedItem);
+                WinnerComboBox.Items.Add(AwayTeam.SelectedItem);
+            }
+        }
+
+        private string AddSeason()
+        {
+            StringBuilder b = new();
+            b.Append("INSERT fb.Season\n");
+            b.Append($"VALUES ({SeasonSeason.Text})");
+            return b.ToString();
+        }
+
+        private void AddSeasonButton_Click(object sender, EventArgs e)
+        {
+            if (Login.form2.Connection != null && SeasonSeason.Text.Length == 4)
+            {
+                ExecuteNonQuery(Login.form2.Connection, AddSeason());
+            }
+            else
+            {
+                MessageBox.Show("Invalid value (should be \"yyyy\")");
+            }
         }
     }
 }

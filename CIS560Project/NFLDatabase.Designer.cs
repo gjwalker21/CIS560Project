@@ -36,9 +36,9 @@
             PlayersButton = new Button();
             ScheduleButton = new Button();
             richTextBox1 = new RichTextBox();
-            HomeTeamPerformance = new Button();
-            ConferenceRank = new Button();
-            AverageAge = new Button();
+            WinsByAgeGroup = new Button();
+            HomefieldAdvantage = new Button();
+            DivisionSuccess = new Button();
             AverageWins = new Button();
             RunQueryButton = new Button();
             SearchButton = new Button();
@@ -129,39 +129,39 @@
             richTextBox1.TabIndex = 9;
             richTextBox1.Text = "";
             // 
-            // HomeTeamPerformance
+            // WinsByAgeGroup
             // 
-            HomeTeamPerformance.Location = new Point(469, 118);
-            HomeTeamPerformance.Name = "HomeTeamPerformance";
-            HomeTeamPerformance.Size = new Size(158, 23);
-            HomeTeamPerformance.TabIndex = 10;
-            HomeTeamPerformance.Text = "Home Team Performance";
-            HomeTeamPerformance.UseVisualStyleBackColor = true;
-            HomeTeamPerformance.Click += LoadQueryButton_Click;
+            WinsByAgeGroup.Location = new Point(469, 118);
+            WinsByAgeGroup.Name = "WinsByAgeGroup";
+            WinsByAgeGroup.Size = new Size(158, 23);
+            WinsByAgeGroup.TabIndex = 10;
+            WinsByAgeGroup.Text = "Wins by Age Group";
+            WinsByAgeGroup.UseVisualStyleBackColor = true;
+            WinsByAgeGroup.Click += LoadQueryButton_Click;
             // 
-            // ConferenceRank
+            // HomefieldAdvantage
             // 
-            ConferenceRank.Location = new Point(469, 190);
-            ConferenceRank.Name = "ConferenceRank";
-            ConferenceRank.Size = new Size(158, 23);
-            ConferenceRank.TabIndex = 11;
-            ConferenceRank.Text = "Rank Teams in Conference";
-            ConferenceRank.UseVisualStyleBackColor = true;
-            ConferenceRank.Click += LoadQueryButton_Click;
+            HomefieldAdvantage.Location = new Point(469, 182);
+            HomefieldAdvantage.Name = "HomefieldAdvantage";
+            HomefieldAdvantage.Size = new Size(158, 23);
+            HomefieldAdvantage.TabIndex = 11;
+            HomefieldAdvantage.Text = "Homefield Advantage";
+            HomefieldAdvantage.UseVisualStyleBackColor = true;
+            HomefieldAdvantage.Click += LoadQueryButton_Click;
             // 
-            // AverageAge
+            // DivisionSuccess
             // 
-            AverageAge.Location = new Point(469, 261);
-            AverageAge.Name = "AverageAge";
-            AverageAge.Size = new Size(158, 23);
-            AverageAge.TabIndex = 12;
-            AverageAge.Text = "Average Age per Position";
-            AverageAge.UseVisualStyleBackColor = true;
-            AverageAge.Click += LoadQueryButton_Click;
+            DivisionSuccess.Location = new Point(469, 316);
+            DivisionSuccess.Name = "DivisionSuccess";
+            DivisionSuccess.Size = new Size(158, 23);
+            DivisionSuccess.TabIndex = 12;
+            DivisionSuccess.Text = "Division Success";
+            DivisionSuccess.UseVisualStyleBackColor = true;
+            DivisionSuccess.Click += LoadQueryButton_Click;
             // 
             // AverageWins
             // 
-            AverageWins.Location = new Point(469, 328);
+            AverageWins.Location = new Point(469, 249);
             AverageWins.Name = "AverageWins";
             AverageWins.Size = new Size(158, 23);
             AverageWins.TabIndex = 13;
@@ -241,9 +241,9 @@
             Controls.Add(SearchButton);
             Controls.Add(RunQueryButton);
             Controls.Add(AverageWins);
-            Controls.Add(AverageAge);
-            Controls.Add(ConferenceRank);
-            Controls.Add(HomeTeamPerformance);
+            Controls.Add(DivisionSuccess);
+            Controls.Add(HomefieldAdvantage);
+            Controls.Add(WinsByAgeGroup);
             Controls.Add(richTextBox1);
             Controls.Add(ScheduleButton);
             Controls.Add(PlayersButton);
@@ -268,9 +268,9 @@
         private Button PlayersButton;
         private Button ScheduleButton;
         private RichTextBox richTextBox1;
-        private Button HomeTeamPerformance;
-        private Button ConferenceRank;
-        private Button AverageAge;
+        private Button WinsByAgeGroup;
+        private Button HomefieldAdvantage;
+        private Button DivisionSuccess;
         private Button AverageWins;
         private Button RunQueryButton;
         private Button SearchButton;

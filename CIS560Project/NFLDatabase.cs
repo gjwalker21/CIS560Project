@@ -24,6 +24,7 @@ namespace CIS560Project
         public NFLDatabase()
         {
             InitializeComponent();
+            DeleteRowButton.Enabled = false;
         }
 
         private void Table_Click(object sender, EventArgs e)
@@ -34,48 +35,56 @@ namespace CIS560Project
                 {
                     currentTable = "fb.Conference";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
                 if (b.Name == "DivisionsButton")
                 {
                     currentTable = "fb.Division";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
                 if (b.Name == "SeasonButton")
                 {
                     currentTable = "fb.Season";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
                 if (b.Name == "TeamsButton")
                 {
                     currentTable = "fb.Team";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
                 if (b.Name == "PlayerContractButton")
                 {
                     currentTable = "fb.PlayerContract";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
                 if (b.Name == "PlayersButton")
                 {
                     currentTable = "fb.Player";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
                 if (b.Name == "ScheduleButton")
                 {
                     currentTable = "fb.Schedule";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
                 if (b.Name == "TeamSeasonButton")
                 {
                     currentTable = "fb.TeamSeason";
                     LoadTable();
+                    DeleteRowButton.Enabled = true;
                 }
 
             }
@@ -212,7 +221,7 @@ namespace CIS560Project
                 LoadTable();
                 MessageBox.Show("Row deleted!");
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -223,27 +232,30 @@ namespace CIS560Project
             string fileName = "";
             if (sender is Button b)
             {
-                if (b.Name == "HomeTeamPerformance")
+                if (b.Name == "WinsByAgeGroup")
                 {
-                    fileName = "HomeTeamPerformance.sql";
+                    fileName = "Age_Group_Wins.sql";
                 }
-                if (b.Name == "ConferenceRank")
+                if (b.Name == "HomefieldAdvantage")
                 {
-                    fileName = "Conf_rank.sql";
-                }
-                if (b.Name == "AverageAge")
-                {
-                    fileName = "AVG_agePos.sql";
+                    fileName = "Home_Adv.sql";
                 }
                 if (b.Name == "AverageWins")
                 {
                     fileName = "AVG_wins_3.sql";
                 }
+                if (b.Name == "DivisionSuccess")
+                {
+                    fileName = "Division_Success.sql";
+                }
             }
 
-            using StreamReader sr = new(fileName);
-            richTextBox1.Text = sr.ReadToEnd();
-            RunQuery(richTextBox1.Text);
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                using StreamReader sr = new(fileName);
+                richTextBox1.Text = sr.ReadToEnd();
+                RunQuery(richTextBox1.Text);
+            }
         }
 
         public void RunQueryButton_Click(object sender, EventArgs e)

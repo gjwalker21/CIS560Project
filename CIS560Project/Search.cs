@@ -295,13 +295,13 @@ namespace CIS560Project
                     b.Append($"T2.TeamName = '{AwayTeam.SelectedItem}' ");
                     useAnd = true;
                 }
-                if (!string.IsNullOrEmpty(Winner.SelectedItem?.ToString()))
+                if (!string.IsNullOrEmpty(WinnerComboBox.SelectedItem?.ToString()))
                 {
                     if (useAnd)
                     {
                         b.Append("AND ");
                     }
-                    b.Append($"T3.TeamName = '{Winner.SelectedItem}' ");
+                    b.Append($"T3.TeamName = '{WinnerComboBox.SelectedItem}' ");
                     useAnd = true;
                 }
                 if (!string.IsNullOrEmpty(GameConference.SelectedItem?.ToString()))
@@ -350,5 +350,16 @@ namespace CIS560Project
             this.Hide();
         }
 
+        private void WinnerComboBox_DropDown(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(HomeTeam.SelectedItem?.ToString())
+                && !string.IsNullOrEmpty(AwayTeam.SelectedItem?.ToString()))
+            {
+                WinnerComboBox.Items.Clear();
+                WinnerComboBox.Items.Add("");
+                WinnerComboBox.Items.Add(HomeTeam.SelectedItem);
+                WinnerComboBox.Items.Add(AwayTeam.SelectedItem);
+            }
+        }
     }
 }
