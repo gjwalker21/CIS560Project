@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             ConferenceButton = new Button();
             dataGridView1 = new DataGridView();
             DivisionsButton = new Button();
@@ -42,16 +41,12 @@
             AverageAge = new Button();
             AverageWins = new Button();
             RunQueryButton = new Button();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            addRowToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
             SearchButton = new Button();
             label1 = new Label();
             label2 = new Label();
             AddRowButton = new Button();
             DeleteRowButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // ConferenceButton
@@ -68,12 +63,13 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(57, 420);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(936, 364);
             dataGridView1.TabIndex = 1;
-            dataGridView1.MouseClick += Mouse_Click;
             // 
             // DivisionsButton
             // 
@@ -183,27 +179,6 @@
             RunQueryButton.UseVisualStyleBackColor = true;
             RunQueryButton.Click += RunQueryButton_Click;
             // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { addRowToolStripMenuItem, toolStripMenuItem1 });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(134, 48);
-            // 
-            // addRowToolStripMenuItem
-            // 
-            addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
-            addRowToolStripMenuItem.Size = new Size(133, 22);
-            addRowToolStripMenuItem.Text = "Add Row";
-            addRowToolStripMenuItem.Click += AddRow_Click;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.AccessibleName = "DeleteRow";
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(133, 22);
-            toolStripMenuItem1.Text = "Delete Row";
-            toolStripMenuItem1.Click += DeleteRow_Click;
-            // 
             // SearchButton
             // 
             SearchButton.Location = new Point(1026, 753);
@@ -252,6 +227,7 @@
             DeleteRowButton.TabIndex = 22;
             DeleteRowButton.Text = "Delete Row";
             DeleteRowButton.UseVisualStyleBackColor = true;
+            DeleteRowButton.Click += DeleteRow_Click;
             // 
             // NFLDatabase
             // 
@@ -279,7 +255,6 @@
             Name = "NFLDatabase";
             Text = "NFLDatabase";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -298,9 +273,6 @@
         private Button AverageAge;
         private Button AverageWins;
         private Button RunQueryButton;
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem addRowToolStripMenuItem;
         private Button SearchButton;
         private Label label1;
         private Label label2;

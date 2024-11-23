@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Text;
 
 namespace CIS560Project
 {
@@ -132,21 +133,57 @@ namespace CIS560Project
                 && currentTable != "fb.Division"
                 && currentTable != "fb.Team")
             {
-                string query;
-                string rowID = currentTable switch
+                StringBuilder b = new();
+
+                if (dataGridView1.SelectedRows.Count == 1 && currentTable == "fb.Player")
                 {
-                    "fb.Season" => "SeasonID",
-                    "fb.Schedule" => "GameID",
-                    "fb.Player" => "PlayerID",
-                    _ => ""
-                };
+                    b.Append("DELETE FROM fb.PlayerContract\n");
+                    b.Append("WHERE PlayerID = (\n");
+                    b.Append("SELECT PlayerID\n");
+                    b.Append("FROM fb.Player\n");
+                    b.Append($"WHERE PlayerName = '{dataGridView1.CurrentRow.Cells[1].Value.ToString()}' ");
+                    b.Append($"AND [Position] = '{dataGridView1.CurrentRow.Cells[2].Value.ToString()}' ");
+                    b.Append("AND TeamID = (\n");
+                    b.Append("SELECT TeamID\n");
+                    b.Append("FROM fb.Team\n");
+                    b.Append($"WHERE TeamName = '{dataGridView1.CurrentRow.Cells[4].Value.ToString()}')\n);");
 
-                query = $"DELETE FROM {currentTable} WHERE {rowID} = {dataGridView1.CurrentRow.Cells[0]}";
-
+                    b.Append("DELETE FROM fb.Player\n");
+                    b.Append($"WHERE PlayerName = '{dataGridView1.CurrentRow.Cells[1].Value.ToString()}' ");
+                    b.Append($"AND [Position] = '{dataGridView1.CurrentRow.Cells[2].Value.ToString()}'");
+                }
+                else if (dataGridView1.SelectedRows.Count == 1 && currentTable == "fb.Schedule")
+                {
+                    string? dateString = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                    
+                    if (!string.IsNullOrEmpty(dateString))
+                    {
+                        DateTime parsedDate = DateTime.Parse(dateString);
+                        string formattedDate = parsedDate.ToString("yyyy-MM-dd");
+                        b.Append("DELETE FROM fb.Schedule\n");
+                        b.Append("WHERE HomeTeamID = (\n");
+                        b.Append("SELECT TeamID\n");
+                        b.Append("FROM fb.Team\n");
+                        b.Append($"WHERE TeamName = '{dataGridView1.CurrentRow.Cells[1].Value.ToString()}') AND ");
+                        b.Append("AwayTeamID = (\n");
+                        b.Append("SELECT TeamID\n");
+                        b.Append("FROM fb.Team\n");
+                        b.Append($"WHERE TeamName = '{dataGridView1.CurrentRow.Cells[2].Value.ToString()}') AND ");
+                        b.Append("WinnerID = (\n");
+                        b.Append("SELECT TeamID\n");
+                        b.Append("FROM fb.Team\n");
+                        b.Append($"WHERE TeamName = '{dataGridView1.CurrentRow.Cells[3].Value.ToString()}') AND ");
+                        b.Append($"WinnerScore = {dataGridView1.CurrentRow.Cells[4].Value.ToString()} AND ");
+                        b.Append($"LoserScore = {dataGridView1.CurrentRow.Cells[5].Value.ToString()} AND ");
+                        b.Append($"Date = '{formattedDate}' AND ");
+                        b.Append($"Location = '{dataGridView1.CurrentRow.Cells[7].Value.ToString()}' AND ");
+                        b.Append($"SeasonID = {dataGridView1.CurrentRow.Cells[8].Value.ToString()}");
+                    }
+                }
 
                 if (Connection != null)
                 {
-                    ExecuteNonQuery(Connection, query);
+                    ExecuteNonQuery(Connection, b.ToString());
                 }
             }
         }
@@ -167,10 +204,18 @@ namespace CIS560Project
 
         private void ExecuteNonQuery(SqlConnection cn, string command)
         {
-            var cmd = cn.CreateCommand();
-            cmd.CommandText = command;
-            cmd.ExecuteNonQuery();
-            LoadTable();
+            try
+            {
+                var cmd = cn.CreateCommand();
+                cmd.CommandText = command;
+                cmd.ExecuteNonQuery();
+                LoadTable();
+                MessageBox.Show("Row deleted!");
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void LoadQueryButton_Click(object sender, EventArgs e)
@@ -218,14 +263,6 @@ namespace CIS560Project
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void Mouse_Click(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                contextMenuStrip1.Show(this.dataGridView1, e.Location);
             }
         }
 

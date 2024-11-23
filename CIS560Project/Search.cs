@@ -55,6 +55,7 @@ namespace CIS560Project
         private string TeamSearch()
         {
             bool goAhead = false;
+
             foreach (Control control in TeamBox.Controls)
             {
                 if (control is ComboBox box)
@@ -67,79 +68,76 @@ namespace CIS560Project
                 }
                 if (control is TextBox text)
                 {
-                    if (text.Text != null)
+                    if (!string.IsNullOrWhiteSpace(text.Text))
                     {
                         goAhead = true;
                         break;
                     }
                 }
             }
+
             if (goAhead)
             {
                 StringBuilder b = new();
-                b.Append("SELECT DISTINCT T.TeamID, T.TeamName, D.DivisionName, C.ConferenceName\n");
+                b.Append("SELECT DISTINCT T.TeamID, T.TeamName, D.DivisionName, C.ConferenceName, TS.SeasonID, S.Date\n");
                 b.Append(
                     "FROM fb.Team T\n" +
                     "INNER JOIN fb.Division D ON D.DivisionID = T.DivisionID\n" +
                     "INNER JOIN fb.Conference C ON C.ConferenceID = D.ConferenceID\n" +
-                    "INNER JOIN fb.Schedule S1 ON S1.HomeTeamID = T.TeamID\n" +
-                    "INNER JOIN fb.Schedule S2 ON S2.AwayTeamID = T.TeamID\n" +
-                    "INNER JOIN fb.TeamSeason TS ON TS.TeamID = T.TeamID\n" +
+                    "LEFT JOIN fb.Schedule S ON (S.HomeTeamID = T.TeamID OR S.AwayTeamID = T.TeamID)\n" +
+                    "LEFT JOIN fb.TeamSeason TS ON TS.TeamID = T.TeamID\n" +
                     "WHERE ");
+
                 bool useAnd = false;
+
+
                 if (!string.IsNullOrEmpty(TeamTeamName.SelectedItem?.ToString()))
                 {
-                    if (useAnd)
-                    {
-                        b.Append("AND ");
-                    }
+                    if (useAnd) b.Append("AND ");
                     b.Append($"T.TeamName = '{TeamTeamName.SelectedItem}' ");
                     useAnd = true;
                 }
+
                 if (!string.IsNullOrEmpty(TeamDivision.SelectedItem?.ToString()))
                 {
-                    if (useAnd)
-                    {
-                        b.Append("AND ");
-                    }
+                    if (useAnd) b.Append("AND ");
                     b.Append($"D.DivisionName = '{TeamDivision.SelectedItem}' ");
                     useAnd = true;
                 }
-                if (!string.IsNullOrEmpty(TeamSeason.SelectedItem?.ToString()))
-                {
-                    if (useAnd)
-                    {
-                        b.Append("AND ");
-                    }
-                    b.Append($"TS.SeasonID = {TeamSeason.SelectedItem} ");
-                    useAnd = true;
-                }
+
                 if (!string.IsNullOrEmpty(TeamConference.SelectedItem?.ToString()))
                 {
-                    if (useAnd)
-                        b.Append("AND ");
+                    if (useAnd) b.Append("AND ");
                     b.Append($"C.ConferenceName = '{TeamConference.SelectedItem}' ");
                     useAnd = true;
                 }
+
+                if (!string.IsNullOrEmpty(TeamSeason.SelectedItem?.ToString()))
+                {
+                    if (useAnd) b.Append("AND ");
+                    b.Append($"TS.SeasonID = {TeamSeason.SelectedItem} ");
+                    useAnd = true;
+                }
+
                 if (!string.IsNullOrEmpty(TeamPlayedOn.Text))
                 {
-                    if (useAnd)
-                    {
-                        b.Append("AND ");
-                    }
-                    b.Append($"S1.Date = '{TeamPlayedOn.Text}' ");
+                    if (useAnd) b.Append("AND ");
+                    b.Append($"S.Date = '{TeamPlayedOn.Text}' ");
                     useAnd = true;
                 }
                 if (!string.IsNullOrEmpty(TeamPlayedAt.SelectedItem?.ToString()))
                 {
-                    if (useAnd)
-                    {
-                        b.Append("AND ");
-                    }
-                    b.Append($"S1.Location = '{TeamPlayedAt.SelectedItem}' ");
+                    if (useAnd) b.Append("AND ");
+                    b.Append($"S.Location = '{TeamPlayedAt.SelectedItem}' ");
                 }
+
+                b.Append(" AND S.SeasonID = TS.SeasonID");
+
+                b.Append("\nORDER BY T.TeamName ASC;");
+
                 return b.ToString();
             }
+
             return "";
         }
 
