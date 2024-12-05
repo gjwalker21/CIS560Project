@@ -189,6 +189,11 @@ namespace CIS560Project
                         b.Append($"SeasonID = {dataGridView1.CurrentRow.Cells[8].Value.ToString()}");
                     }
                 }
+                else if (dataGridView1.SelectedRows.Count == 1 && currentTable == "fb.Season")
+                {
+                    b.Append("DELETE FROM fb.Season\n");
+                    b.Append($"WHERE SeasonID = {dataGridView1.CurrentRow.Cells[0].Value.ToString()}");
+                }
 
                 if (Connection != null)
                 {
